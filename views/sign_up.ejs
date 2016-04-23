@@ -1,0 +1,150 @@
+<html>
+<head>
+<title>Login</title>
+<link rel='stylesheet' href='/stylesheets/style.css' />
+<link rel='stylesheet' href='/stylesheets/bootstrap.min.css' />
+
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+</head>
+<body>
+	<div ng-app="firstAngulatApp" ng-controller="personController"
+		class="panel panel-primary">
+		<!-- Default panel contents -->
+		<div class="panel-heading">Signup</div>
+		<div class="panel-body">
+			<form class="form-horizontal" role="form">
+			
+			<div class="form-group  usernameDiv">
+					<label class="inputFirstName"
+						class="col-sm-2 control-label pull-left"></label>
+					<div class="col-sm-10">
+						<input type="text" ng-model="inputFirstName" class="form-control"
+							name="inputFirstName" id="inputFirstName" placeholder="FirstName" required>
+					</div>
+				</div>
+			
+		<div class="form-group  usernameDiv">
+					<label class="inputLastName"
+						class="col-sm-2 control-label pull-left"></label>
+					<div class="col-sm-10">
+						<input type="text" ng-model="inputLastName" class="form-control"
+							name="inputLastName" id="inputLastName" placeholder="LastName" required>
+					</div>
+				</div>
+						
+						<div class="form-group  usernameDiv">
+					<label class="EmailId"
+						class="col-sm-2 control-label pull-left"></label>
+					<div class="col-sm-10">
+						<input type="email" ng-model="EmailId" class="form-control"
+							name="EmailId" id="EmailId" placeholder="Emailid" required>
+					</div>
+				</div>
+						
+						
+						
+						
+				<div class="form-group  usernameDiv">
+					<label class="inputUsername"
+						class="col-sm-2 control-label pull-left"></label>
+					<div class="col-sm-10">
+						<input type="text" ng-model="inputUsername" class="form-control"
+							name="inputUsername" id="inputUsername" placeholder="UserName" required>
+					</div>
+				</div>
+				<div class="form-group  usernameDiv">
+					<label for="inputPassword"></label>
+					<div class="col-sm-10">
+						<input type="password" ng-model="inputPassword"
+							class="form-control" name="inputPassword" id="inputPassword"
+							placeholder="Password" required>
+					</div>
+				</div>
+				
+				<div class="form-group  usernameDiv">
+					<label for="retypePassword"></label>
+					<div class="col-sm-10">
+						<input type="password" ng-model="retypePassword"
+							class="form-control" name="retypePassword" id="retypePassword"
+							placeholder="Retype Password" required>
+					</div>
+				</div>
+				
+				<div class="form-group  usernameDiv">
+					<label for="PhoneNo"></label>
+					<div class="col-sm-10">
+						<input type="number" ng-model="PhoneNo"
+							class="form-control" name="PhoneNo" id="PhoneNo"
+							placeholder="PhoneNo (optional)">
+					</div>
+				</div>
+				
+				<div class="form-group  usernameDiv">
+					<label for="Sex"></label>
+					<div class="col-sm-10">
+						<input type="radio" ng-model="sex" value="male" name="sex" id="sex" required>Male</input><br>
+						<input type="radio" ng-model="sex" value="female" name="sex" id="sex" required>Female<br>
+							
+												</div>
+				</div>
+				
+				<div class="form-group  usernameDiv">
+					<label for="DOB"></label>
+					<div class="col-sm-10">
+						<br> Birthday: <input type="text" ng-model="dob" value="dob" name="dob" id="dob" placeholder="DOB"
+				required><br> <br> 
+					</div>
+				</div>
+				
+
+				<div class="form-group ">
+					<div class="pull-left signUp">
+						<button ng-click="signUp()" class="btn btn-primary">Sign
+							Up</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+
+<script>
+	
+	angular.module('firstAngulatApp',[])
+	
+	function personController($scope,$http,$location) {
+		
+	    $scope.var1 = "abcd";
+	    
+//	var signupdata=JSON.stringify({"username": $scope.inputUsername,"password":$scope.inputPassword});
+		$scope.signUp = function() {
+			console.log("username"+$scope.inputUsername+"password"+$scope.inputPassword );
+			console.log("date"+$scope.dob);
+		    var dob=$scope.dob;
+		    dob=dob.toString();
+			$http({
+	            method: 'POST',
+	            url: '/sign_up',
+	            data: {"firstname": $scope.inputFirstName ,"lastname": $scope.inputLastName ,"email": $scope.EmailId,"username": $scope.inputUsername,"password":$scope.inputPassword,"phone": $scope.PhoneNo, "sex" : $scope.sex, "dob": dob}
+	            
+	         }).success(function(response){
+	           
+	            alert(JSON.stringify(response));
+	            if(response.signup == "Success")
+	           		window.location = '/success_signup';
+	            else
+	            	window.location = '/fail_signup';
+	            
+	            
+	        }).error(function(error){
+	            alert("error");
+	        });
+	    };
+	}
+	</script>
+</body>
+</html>

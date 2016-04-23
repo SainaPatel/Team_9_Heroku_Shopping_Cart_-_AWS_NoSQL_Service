@@ -37,6 +37,13 @@ Upcoming tasks
 3) Creating frontend code for 'select category', 'select book' and 'search book' module
 4) Creating backend code for 'select category', 'select book' and 'search book' module
 
+04/18/2016: 	
+Added JavaScript and EJS code for Select Category
+
+04/20/2016: 
+Added JavaScript and EJS code for Search Book
+
+
 
 
 
