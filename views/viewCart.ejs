@@ -10,8 +10,41 @@
 	  <style>
 		#panel {background-color:#f2f2f2; margin-top:100px; margin-bottom:75px; padding-left:40px; padding-bottom:70px}
 	  </style>
+	  <script type="text/javascript">
+	  var app = angular.module('myApp', []);
+	  app.controller('Controller',function($scope,$http){
+		  
+		  $scope.viewCart=function(){
+			  $http({
+				  method : "GET",
+						url : '/viewCart',
+						data: {}
+			  }).success(function(data){
+				  /* $scope.book_name=data.product_details.book_name;
+				  $scope.book_author=data.product_details.book_author;
+				  $scope.book_cost=data.product_details.book_cost;
+				  $scope.book_quantity=1; */
+				  $scope.product_details=data.product_details;
+				//  $scope.quantity=data.product_details.value.quantity;
+				  
+			  })
+		  
+		  }
+		  
+		  $scope.changeQuantity=function(product_details){
+			  $http({
+				  method:"POST",
+				  url: '/changeQuantity',
+				  data:{"product_details":product_details,"quantity":document.getElementById(product_details._rev).value}
+			  }).success(function(data){
+				  
+			  })
+		  }
+		  
+	  })
+	  </script>
    </head>
-   <body>
+   <body ng-app="myApp" ng-controller="Controller" ng-init="viewCart()">
 		<nav class="navbar navbar-default navbar-fixed-top" style="background-color:#484848; padding:10px">
    <div class="row">
    <div class="col-sm-11">
@@ -88,12 +121,6 @@
 </div>
 </div>
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 <div class="row">
 <div class="col-sm-1">
 </div>
@@ -101,38 +128,22 @@
 <table class="table">
     <thead>
       <tr>
-      <th>Quantity</th>
-        <th>Book id</th>
-        <th>Book name</th>
-        <th>Cost</th>
+      <th></th>
+      <th>Book Author</th>
+        <th>Book Name</th>
+        <th>Price</th>
+        <th>Quantity</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>1</td>
-        <td>001</td>
-        <td>Dictionary</td>
-        <td>100</td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>002</td>
-        <td>Romeo and Juliet</td>
-        <td>200</td>
-      </tr>
-      <tr>
-        <td>1</td>
-        <td>003</td>
-        <td>Sherlock</td>
-        <td>100</td>
-      </tr>
-      <tr>
-        <td></td>
-        <td></td>
-        <td><strong>Total</strong></td>
-        <td>400</td>
-      </tr>
-      
+      <tr ng-repeat="user in product_details">
+      <td><img ng-src="images/{{user.value.book_image}}" height="120" width="120"/></img></td>
+        <td><br><br>{{user.value.book_author}}</td>
+        <td><br><br>{{user.value.book_name}}</td>
+        <td><br><br>{{user.value.book_cost}} $  </td>
+        <td><br><br><input type="number" ng-model="quantity" id="{{user.value._rev}}" value={{user.value.quantity}} ng-click="changeQuantity(user.value)"></input></td>
+        <td><br><br><button>Remove</button>
+      </tr>   
     </tbody>
   </table>
   
@@ -154,8 +165,6 @@
     <br>
     
 </div>
-
-
 
 		<div class="row">
 			<div class="panel-body" style="background-color:#333333;padding-left:40px">
