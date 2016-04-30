@@ -16,6 +16,9 @@ var expressSession = require("express-session");
 //var mongo = require("./routes/mongo");
 var login = require("./routes/login");
 var book = require("./routes/book");
+var cart=require("./routes/cart");
+var customer = require("./routes/customer");
+var signup=require("./routes/signup");
 var app = express();
 
 //all environments
@@ -49,13 +52,21 @@ if ('development' === app.get('env')) {
 app.get('/', routes.index);
 app.get('/users', user.list);
 app.get('/homepage',login.redirectToHomepage);
+app.get('/viewProfile',customer.viewProfile);
+app.get('/getProfileDetails/:email',customer.getProfileDetails);
+app.get('/viewOrderHistory/:customerID',customer.viewOrderHistory);
 
 //POST Requests
+app.post('/signup',signup.signup);
 app.post('/checklogin', login.checkLogin);
 app.post('/logout', login.logout);
 app.post('/select_category',book.select_category);
 app.post('/search_book',book.search_book);
-
+app.get('/viewCart',cart.viewCart);
+app.post('/addToCart',cart.addToCart);
+app.post('/removeFromCart',cart.removeFromCart);
+app.post('/editProfile',customer.editProfile);
+app.post('/changeQuantity',cart.changeQuantity);
 http.createServer(app).listen(app.get('port'), function(){
 	console.log('Express server listening on port ' + app.get('port'));
 });  

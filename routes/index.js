@@ -4,5 +4,9 @@
  */
 
 exports.index = function(req, res){
-  res.render('login', { title: 'Express' });
+//<<<<<<< HEAD
+  //res.render('search_book', { title: 'Express' });
+//=======
+  res.render('search_book', { title: 'Express' });
+//>>>>>>> origin/master
 };

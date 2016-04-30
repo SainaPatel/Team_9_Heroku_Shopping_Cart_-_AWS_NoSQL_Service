@@ -1,47 +1,40 @@
+
 <!DOCTYPE html>
 <html>
-<head>
-<title><%= title %></title>
-<link rel='stylesheet' href='/stylesheets/style.css' />
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<script
-	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
-<!-- Loading the AngularJS file from /public/angularJS folder -->
-<script src="angularjs/login.js"></script>
-</head>
-<body ng-app="login" ng-controller="login">
-	<div class="row">
-		<div class="col-md-4">
-			<div class="row">
-				<div class="col-md-12" style="margin: 10px;">
-					Username:<br> <input type="text" name="username"
-						ng-model="username">
-				</div>
-				<div class="col-md-12" style="margin: 10px;">
-					Password:<br> <input type="password" name="password"
-						ng-model="password">
-				</div>
-
-				<div class="col-md-12" style="margin: 10px;">
-					<div class="alert alert-danger" ng-hide="invalid_login">
-						<strong>Incorrect username or password</strong>
-					</div>
-					<div class="alert alert-danger" ng-hide="unexpected_error">
-						<strong>Unexpected error, try again</strong>
-					</div>
-					<input type="submit" class="btn btn-success" ng-click="submit();"
-						value="Login" />
-				</div>
+   <head>
+      <title>Amazon Fresh Login</title>
+      <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+      <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+      <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+   </head>
+   <body>
+		<nav class="navbar navbar-default navbar-fixed-top" style="background-color:#484848; padding:10px">
+			<div class="container-fluid">
+               <a href=""><img src="http://intertwingly.net/projects/AWDwR3/data/images/logo.png?1324774743" alt="Amazon logo"></a>
 			</div>
+		</nav>
+	    <br/><br/>
+		<div class="col-sm-4"></div>
+		<div class="col-sm-3" style="text-align:left">
+			<form method="POST" action="/checklogin">
+				<h4><br/><br/><b>Sign In</b><br/><br/></h4>
+				E-mail or mobile number
+				<input type="email" class="form-control" name="email">
+				<br/>
+				Password
+				<input type="password" class="form-control" name="password">
+				<span class="pull-right"><a href="" style="color:#4d9900"><u><small>Forgot password?</small></u></a></span>
+				<br/><br/>
+				<button type="submit" class="form-control" style="background-color:rgb(204, 255, 153); color:black">Sign In</button>
+			</form>
+			</br>
+			<p>New TheBookShelf.com customer? <a href=""><u>Create a new TheBookShelf account</u></a> </p>
+			</br></br>
+			<center><small><a href="" style="color:#4d9900"><u>Conditions of Use</u></a>  <a href="" style="color:#4d9900"><u>Privacy Notice</u></a></small></center>
+			<p><small>&copy 1996-2016, TheBookShelf.com, Inc. or its affiliates</small></p>
+			<br/><br/><br/><br/>
 		</div>
-	</div>
-</body>
+		<div class="col-sm-5"></div>
+   </body>
 </html>

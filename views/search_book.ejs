@@ -1,57 +1,148 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title></title>
-<link rel='stylesheet' href='/stylesheets/style.css' />
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<script
-	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
-<!-- Loading the AngularJS file from /public/angularJS folder -->
-<script src="angularjs/book.js"></script>
-</head>
-<body ng-app="select_category" ng-controller="select_category">
-	<div class="row">
-		<div class="col-md-4">
-			<div class="row">
-				<div class="col-md-4" style="margin: 10px;">
-					Category:
-					<select type="text" name="category" ng-model="bookCategory">
-						<option value="Science">Science</option>
-						<option value="Fiction">Fiction</option>
-						<option value="Literature">Literature</option>
-						<option value="Biography">Biography</option>
-						<option value="Computer">Computer</option>
-						<option value="Philosophy">Philosophy</option>
-						<option value="Religion">Religion</option>
-						<option value="Art">Art</option>
-						<option value="Business">Business</option>
-						<option value="Travel">Travel</option>
-					
-					</select>
+   <head>
+      <title></title>
+      <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+      <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+      <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+      <!-- Loading the AngularJS file from /public/angularJS folder -->
+      <script src="angularjs/book.js"></script>
+      <style>
+         #panel {background-color:#f2f2f2; margin-top:100px; margin-bottom:75px; padding-left:40px; padding-bottom:70px}
+      </style>
+   </head>
+   <body>
+      <nav class="navbar navbar-default navbar-fixed-top" style="background-color:#484848; padding:10px">
+         <div class="container-fluid" style="color:white">
+            <a href=""><img src="http://intertwingly.net/projects/AWDwR3/data/images/logo.png?1324774743" alt="Amazon logo"> </a>
+            Already an TheBookShelf customer? <a href="#" style="color:white"><u>Sign in</u></a>
+         </div>
+      </nav>
+      <div ng-app="search_book" ng-controller="search_book">
+         <div class="row">
+            <div class="col-md-12">
+               <div class="row">
+                  <br><br><br><br><br>
+                  <div class="col-sm-3">
+                  </div>
+                  <div class="col-sm-6">
+                     <div align = "center">
+                        <select type="text" ng-model="searchBy" style="padding:5px; width:200px;">
+                           <option value="Category" selected="selected">Category</option>
+                           <option value="Author">Author</option>
+                           <option value="Title">Title</option>
+                        </select>
+                        <select name="category" ng-model="searchValue" ng-show="searchBy=='Category'"  style="padding:5px; width:200px;">
+                           <option value="Science">Science</option>
+                           <option value="Fiction">Fiction</option>
+                           <option value="Literature">Literature</option>
+                           <option value="Biography">Biography</option>
+                           <option value="Computer">Computer</option>
+                        </select>
+                        <input id="myinput" type="text" ng-model="searchValue"
+                           ng-hide="searchBy=='Category'"  style="padding:5px; width:200px;"/> <input type="submit"
+                           class="btn btn-success" ng-click="submit();" value="Go" />
+                     </div>
+                  </div>
+                  <div class="col-sm-3"></div>
+               </div>
+               <div class="row">
+               <div class="col-sm-2">
+               </div>
+                  <div class="col-md-4" style="margin: 10px;">
+                     <table class="table table-bordered" style="background-color:lavenderblush;">
+                        <tr ng-repeat="row in rows" ng-if="$even">
+                           <td><img height="150px" width="100px" alt=""
+                              src="images/{{row.doc.book_image}}"></td>
+                           <td>
+                              <table>
+                                 <tr>
+                                    <td>Name:</td>
+                                    <td>{{row.doc.book_name}}</td>
+                                 </tr>
+                                 <tr>
+                                    <td>Description:</td>
+                                    <td>{{row.doc.book_description}}</td>
+                                 </tr>
+                                 <tr>
+                                    <td>Price:</td>
+                                    <td>$ {{row.doc.book_price}}</td>
+                                 </tr>
+                                 <tr>
+                                    <td>Category:</td>
+                                    <td>{{row.doc.book_category}}</td>
+                                 </tr>
+                                 <tr>
+                                    <td>Author:</td>
+                                    <td>{{row.doc.book_author}}</td>
+                                 </tr>
+                              </table>
+                              <button class="btn-link"><img
+                  src="https://images-na.ssl-images-amazon.com/images/G/01/omaha/images/buttons/refresh/btn-atc-mini._V134697584_.png">
+                              </button>
+                           </td>
+                        </tr>
+                     </table>
+                  </div>
+                  <div class="col-md-4" style="margin: 10px;">
+                     <table class="table table-bordered" style="background-color:lavenderblush;">
+                        <tr ng-repeat="row in rows" ng-if="$odd">
+                           <td><img height="150px" width="100px" alt=""
+                              src="images/{{row.doc.book_image}}"></td>
+                           <td>
+                              <table>
+                                 <tr>
+                                    <td>Name:</td>
+                                    <td>{{row.doc.book_name}}</td>
+                                 </tr>
+                                 <tr>
+                                    <td>Description:</td>
+                                    <td>{{row.doc.book_description}}</td>
+                                 </tr>
+                                 <tr>
+                                    <td>Price:</td>
+                                    <td>$ {{row.doc.book_price}}</td>
+                                 </tr>
+                                 <tr>
+                                    <td>Category:</td>
+                                    <td>{{row.doc.book_category}}</td>
+                                 </tr>
+                                 <tr>
+                                    <td>Author:</td>
+                                    <td>{{row.doc.book_author}}</td>
+                                 </tr>
+                              </table>
+                              <button class="btn-link"><img
+                  src="https://images-na.ssl-images-amazon.com/images/G/01/omaha/images/buttons/refresh/btn-atc-mini._V134697584_.png">
+</button>
+                           </td>
+                        </tr>
+                     </table>
+                  </div>
+                  <div class="col-sm-2">
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="row">
+ <nav class="navbar navbar-default navbar-fixed-bottom" style="background-color:#333333; padding:10px">
+           
+			<div class="panel-body" style="background-color:#333333;padding-left:40px">
+				<div class="row">
+					<div class="col-sm-2" style="color:white">Help<br>Conditions of use<br>Privacy Policy</div>
+					<div class="col-sm-10" style="color:white"> About<br>Carriers</div>
 				</div>
-				<div class="col-md-4" style="margin: 10px;">
-					Author:
-					<input type="text" ng-model="bookAuthor"/>
-				</div>
-				<div class="col-md-4" style="margin: 10px;">
-					Book Title:
-					<input type="text" ng-model="bookName"/>
-				</div>
-
-			
-					<input type="submit" class="btn btn-success" ng-click="submit();"
-						value="Select" />
+				<div style="color:white">
+				<br/> &copy 2007-2016 TheBookShelf, LLC or its affiliates   All items sold by and ship from AmazonFresh unless otherwise specified.<br/><br/>
 				</div>
 			</div>
+		</nav>
+
 		</div>
-	
-</body>
+<div style="background-color: white;" ng-app="CustomerApp" ng-controller="CustomerController">
+
+</div>
+   </body>
 </html>

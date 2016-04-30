@@ -22,8 +22,9 @@ login.controller('login', function($scope, $http) {
 				$scope.unexpected_error = true;
 			}
 			else
-				//Making a get call to the '/redirectToHomepage' API
+			{//Making a get call to the '/redirectToHomepage' API
 				window.location.assign("/homepage"); 
+			}
 		}).error(function(error) {
 			$scope.unexpected_error = false;
 			$scope.invalid_login = true;
