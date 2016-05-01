@@ -122,6 +122,60 @@ exports.search_book = function(req,res)
 	
 };
 
+
+exports.home_search_book = function(req,res)
+{
+	//console.log(req.params.searchBy+" "+req.params.searchValue);
+	
+	var searchValue=req.param('searchValue');
+	var searchBy=req.param('searchBy');
+	var view_name;
+	var view_design;
+	console.log("inside home search book"+searchValue+' '+searchBy);
+	if(searchBy=="Category"){
+		console.log("1");
+		view_design="getByCategory";
+		view_name="by_category";
+	}
+	else if(searchBy=="Author"){
+		console.log("2");
+		view_design="getByAuthor";
+		view_name="by_author";
+	}
+	else{
+		view_design="getByTitle";
+		view_name="by_title";
+		console.log("3");
+	}
+	
+	books.view(view_design, view_name,{startkey: searchValue,endkey: searchValue+"\u9999",'include_docs': true}, function(err, body){
+		  console.log("inside");  
+		  if(!err){
+		    	console.log("inside1");
+		    	var rows=body.rows;
+		    	if(typeof body.rows[0] !== "undefined")
+		        {
+		    		
+		    			
+		    			console.log(rows[0]);
+		    		
+		    		res.render('search_book',{'rows':rows,'msg':"hello"});
+		        }
+		    	else{
+		    		console.log("No rows returned");
+		    	}
+		    	
+		    }
+		    else
+		    	{
+		    	console.log("Error "+err);
+		    	
+		    	}
+		});
+	
+	
+};
+
 exports.select_book=function(req,res){
 	var _id=req.param('_id');
 	books.get(_id, function(err,body){

@@ -12,15 +12,17 @@
          #panel {background-color:#f2f2f2; margin-top:100px; margin-bottom:75px; padding-left:40px; padding-bottom:70px}
       </style>
    </head>
-   <body>
+   <body >
+ 
       <nav class="navbar navbar-default navbar-fixed-top" style="background-color:#484848; padding:10px">
          <div class="container-fluid" style="color:white">
             <a href=""><img src="http://intertwingly.net/projects/AWDwR3/data/images/logo.png?1324774743" alt="Amazon logo"> </a>
             Already an TheBookShelf customer? <a href="#" style="color:white"><u>Sign in</u></a>
          </div>
       </nav>
-      <div ng-app="search_book" ng-controller="search_book">
-         <div class="row">
+       <h1> <%=rows[0].doc._id%></h1>
+       <div ng-app="search_book" ng-controller="search_book">
+         <div class="row" ng-init="rows='<%=rows%>'">
             <div class="col-md-12">
                <div class="row">
                   <br><br><br><br><br>
@@ -125,7 +127,7 @@
                </div>
             </div>
          </div>
-      </div>
+      </div> 
       <div class="row">
  <nav class="navbar navbar-default navbar-fixed-bottom" style="background-color:#333333; padding:10px">
            
