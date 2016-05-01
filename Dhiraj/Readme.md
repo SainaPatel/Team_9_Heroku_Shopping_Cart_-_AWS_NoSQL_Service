@@ -29,6 +29,27 @@ Commit 2:
 
 installed client session node modules, 
 logout operation of destroying sessions.
+
+Week 3:
+Commit 3:
+
+Updated the view cart ui page with the basic template
+
+Week 4:
+Commit 1:
+
+Updated the sign in and the sign up ui page with the basic template
+
+Week 4:
+Commit 2:
+
+Updated the homepage and the view category ui page with the basic template
+
+Week 4:
+Commit 3:
+
+Beautified the the search_book ui
+
 ----------------------------------------------------------------------------------------------------------------------------------------
 
 Journal
@@ -82,3 +103,10 @@ Mongo I installed and started in my local machine further I installed a node mon
 Wrote an API doc of all the parameters required for the registration (signup), login and logout with the returning status code.
 Made some slides on Map-Reduce function in the couch db and gave some examples with it the slides where for the extra credit presentation.
 
+week 3:
+
+Last week I did some of the work on the middleware node.js which was followed by some map-reduce function on the couch db. This week I started with the integration the node with couch db which was further taken care by one of my team mate. After that I followed up with my last week’s work that was the sign in part I built a logout function which was able to redirect the code to the sign in function after that I updated the basic template of the view cart page. The basic template consist of the view the graphical user interface of the website. I used bootstrap navbar class to design the navbar on the top apart from that I used the css style to keep the top navbar constant apart from that I used the style to assign the background color and used the grid element in the bootstrap to set the alignment in the navbar. Apart from that the logo in the navbar is just an image source which access the image directly from the internet. In the main body part I used the table class in the bootstrap to design the table. Apart from it I used a jumbotron bootstrap class to design the below element, this is an element which gives the license and stuff to display.
+
+Week 4:
+
+Last week I started on the graphical user interface of the project. I took the responsibility to design the graphical user interface of the project. I started by giving every ejs page in the project to give its basic template and work on the view how it looks. I started with the login page in which I used the navbar in the top and kept it fixed on top further I procced with the navbar at the bottom and kept that fixed to in the middle page I gave the input type text and submit which would look like a form and where I gave the details that was all about the login page similarly giving the navbar at the header and the footer of the page I created the signup page with the some form elements. Apart from I designed the home page with the help of bootstrap classes like row, carousel and the other different classes I was able to design the graphical user interface beautifully and it gave the client end a very beautiful view and part from the I was able to insert many good images which was able to give the user interface a very good output. Apart from that there were many other angular functionality which I was able to use. Further I was able to give the basic template to all the pages of the project which included signin, signup, hompage, view_cart, view product and I was able to beautify the search_books page. So this week I worked on the front with basic templates and the beautification of the graphical user interface.

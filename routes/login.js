@@ -2,7 +2,7 @@
  * New node file
  */
 var http = require ('http');
-var nano = require('nano')('http://ec2-54-210-203-140.compute-1.amazonaws.com:5984/');
+var nano = require('nano')('http://54.84.95.87:5984/');
 
 exports.checkLogin = function(req,res){
 	// These two variables come from the form on

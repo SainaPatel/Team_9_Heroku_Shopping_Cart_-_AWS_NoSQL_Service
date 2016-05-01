@@ -5,10 +5,10 @@
 //var myConnection= require("./myConnection.js");
 //var checkLoggedInUser= require("./checkLoggedInUser.js");
 var http = require ('http');
-var nano = require('nano')('http://ec2-54-210-203-140.compute-1.amazonaws.com:5984/');
+var nano = require('nano')('http://54.84.95.87:5984/');
 
 exports.viewCart = function(req, res) {
-	var customerid="345";
+	var customerid="343";
 		//req.param("customer_id");
 	
 	var cart=nano.use('cart');
@@ -73,7 +73,8 @@ exports.viewCart = function(req, res) {
 
 exports.addToCart=function(req,res)
 {
-	customerid=req.param("customer_id");
+	//customerid=req.param("customer_id");
+	var customerid="343";
 	var cart=nano.use('cart');
 	var productdetails="product_details";
 	var bookimage=req.param("book_image");
@@ -87,11 +88,12 @@ exports.addToCart=function(req,res)
 	cart.insert({'customer_id' : customerid , 'book_image':bookimage, 'book_name':bookname, 'book_author':bookauthor, 'book_cost':bookcost, 'quantity':quantity},id,function(err,body,header){
 		if (err) {
 			console.log('[cart.insert] ', err.message);
-			return;
+			res.send({"msg" : err.message});
 		}else
 			{
 			console.log("you have inserted the record");
 			console.log(body);
+			res.send({"msg":"Added to Cart Successfully"});
 			}
 	});
 	
@@ -116,4 +118,20 @@ exports.changeQuantity=function(req,res){
 			}
 	});
 	
-}
+};
+
+
+exports.removeFromCart=function(req,res)
+{
+	console.log("inside");
+	var product_details=req.param("product_details");
+	var cart=nano.use('cart');
+	cart.destroy(product_details._id,product_details._rev,function(err,body,header){
+		if (!err) {
+		    console.log("Successfully deleted doc");
+		  }else{
+			  console.log('Error',err);
+		  }
+		
+	});
+};

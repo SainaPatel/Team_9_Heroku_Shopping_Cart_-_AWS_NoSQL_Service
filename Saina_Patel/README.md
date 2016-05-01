@@ -26,6 +26,9 @@ Week 4 :
 1. Created a nodejs API for addToCart and tested it using PostMan. Also made some paramter changes in API of Signup, as we needed more infomation about customer.
 2. I worked on AngularJS module of ViewCart Page where I displayed all the books in user's cart in tabular format.
 3. User can change the quantity for each book in table, for which I have created a changeQuantity API both in nodejs and angularjs. These change is reflected in cart database.
+4. Created Nodejs and Angularjs API's for removeFromCart() 
+5. Replicated our database and tested it for partition tolerance by changing inbound traffic of one instance. 
+6. Tested end-to end working of our entire application (i.e. all api's) on heroku and aws.
  
 
 

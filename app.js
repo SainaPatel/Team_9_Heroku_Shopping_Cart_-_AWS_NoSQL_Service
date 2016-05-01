@@ -61,9 +61,12 @@ app.post('/signup',signup.signup);
 app.post('/checklogin', login.checkLogin);
 app.post('/logout', login.logout);
 app.post('/select_category',book.select_category);
+app.get('/select_category',book.select_category);
 app.post('/search_book',book.search_book);
+app.get('/home_search_book',book.home_search_book);
 app.get('/viewCart',cart.viewCart);
 app.post('/addToCart',cart.addToCart);
+app.post('/removeFromCart',cart.removeFromCart);
 app.post('/editProfile',customer.editProfile);
 app.post('/changeQuantity',cart.changeQuantity);
 http.createServer(app).listen(app.get('port'), function(){
