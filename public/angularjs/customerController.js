@@ -15,7 +15,7 @@ $scope.getProfileDetails=function(){
 				console.log("Email passed" +$scope.email);
 		$http({
 			method : "GET",
-			url : '/getProfileDetails'+$scope.email
+			url : '/getProfileDetails/'+$scope.email
 			
 		}).success(function(data) {
 			console.log("in success Customer Controller: "+JSON.stringify(data));
