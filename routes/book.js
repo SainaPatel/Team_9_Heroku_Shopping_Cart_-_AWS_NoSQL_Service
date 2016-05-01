@@ -1,5 +1,9 @@
 var http = require ('http');
-var nano = require('nano')('http://54.173.26.121:5984/');
+//<<<<<<< Updated upstream
+var nano = require('nano')('http://Team-9-Load-Balancer-423702890.us-east-1.elb.amazonaws.com:5984/');
+//=======
+//var nano = require('nano')('http://team-9-load-balancer-423702890.us-east-1.elb.amazonaws.com:5984/');
+//>>>>>>> Stashed changes
 //var nano = require('nano')('http://localhost:5984/');
 var books=nano.db.use('books');
 /*books.insert(

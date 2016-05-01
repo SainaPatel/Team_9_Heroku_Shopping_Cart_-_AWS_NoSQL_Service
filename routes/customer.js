@@ -1,5 +1,6 @@
 var http = require ('http');
-var nano = require('nano')('http://54.210.203.140:5984');
+var nano=require('nano')('http://Team-9-Load-Balancer-423702890.us-east-1.elb.amazonaws.com:5984/');
+//var nano = require('nano')('http://team-9-load-balancer-423702890.us-east-1.elb.amazonaws.com:5984/');
 
 exports.viewProfile = function(req,res){
 	console.log("viewProfile Called");

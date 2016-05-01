@@ -1,6 +1,7 @@
 
 var http = require ('http');
-var nano = require('nano')('http://54.84.95.87:5984');
+var nano=require('nano')('http://Team-9-Load-Balancer-423702890.us-east-1.elb.amazonaws.com:5984/');
+//var nano = require('nano')('http://team-9-load-balancer-423702890.us-east-1.elb.amazonaws.com:5984/');
 //IP of EC2 instance:5984
 
 nano.db.create('test', function() {
