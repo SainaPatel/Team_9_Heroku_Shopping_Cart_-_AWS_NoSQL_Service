@@ -38,12 +38,14 @@ exports.checkLogin = function(req,res){
 		    			{
 		    			//.send("Incorrect password");
 		    			console.log("Incorrect password");
+		    			res.render('login',{'msg':"Incorrect Password"});
 		    			}
 		        }
 		    	else
 		    		{
 		    		//res.send("Login failed, User doesn't exist");
 		    		console.log("Login failed, User doesn't exist");
+		    		res.render('login',{'msg':"Login failed, User doesn't exist"});
 		    		}
 		    }
 		    else
