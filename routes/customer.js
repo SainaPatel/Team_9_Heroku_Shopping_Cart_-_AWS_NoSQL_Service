@@ -104,9 +104,13 @@ exports.editProfile = function(req,res){
 	
 };
 
+exports.renderOrderPage = function(req,res){
+	console.log("renderOrderPage Called");
+	res.render("orderHistory");
+};
 
-exports.viewOrderHistory = function(req,res){
-	console.log("viewOrderHistory called");
+exports.getOrderDetails = function(req,res){
+	console.log("getOrderDetails called");
 	var test = nano.use('order');
 	var id=req.params.customerID;
 	console.log("ID: "+id);

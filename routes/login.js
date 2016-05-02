@@ -32,7 +32,7 @@ exports.checkLogin = function(req,res){
 		    			console.log("inside3");
 		    			//res.send("Login Successful");
 		    			console.log("Login successful " +doc_email +" "+password);
-		    			res.render('viewCart');
+		    			res.render('logged_in');
 		    			}
 		    		else
 		    			{
