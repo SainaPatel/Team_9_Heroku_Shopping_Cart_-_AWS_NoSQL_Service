@@ -105,6 +105,8 @@ home_search_book.controller('home_search_book', function($scope, $http,$window,$
 });
 
 
+//CustomerController code:
+
 var app = angular.module('CustomerApp', []);
 app.controller('CustomerController', function($scope,$http,$location,$window) {
 	console.log("In Customer Controller");
@@ -122,7 +124,7 @@ $scope.getProfileDetails=function(){
 				console.log("Email passed" +$scope.email);
 		$http({
 			method : "GET",
-			url : '/getProfileDetails'+$scope.email
+			url : '/getProfileDetails/'+$scope.email
 			
 		}).success(function(data) {
 			console.log("in success Customer Controller: "+JSON.stringify(data));
@@ -175,18 +177,23 @@ $scope.updateProfile=function(first_name,last_name,address,zipcode,email,passwor
 
 //viewOrderHistory Controller
 
-$scope.viewOrderHistory=function(req,res){
-    	
+	$scope.viewOrderHistory=function(){
 		console.log("In viewOrderHistory controller");
+		$window.location="/renderOrderPage";
+	};	
+	
+$scope.getOrderDetails=function(req,res){
+    	
+		console.log("In getOrderDetails controller");
 		$scope.id="C_001";
     	
 		$http({
 			method : "GET",
-			url : '/viewOrderHistory/'+$scope.id
+			url : '/getOrderDetails/'+$scope.id
 			
 		}).success(function(data) {
 			
-			console.log("in success viewOrderHistory Controller: "+JSON.stringify(data));			
+			console.log("in success getOrderDetails Controller: "+JSON.stringify(data));			
 			console.log("Data.result" +data.result[0].value);
 			$scope.orders=data.result;
 						
@@ -199,5 +206,3 @@ $scope.viewOrderHistory=function(req,res){
     
 
 });
-
-
