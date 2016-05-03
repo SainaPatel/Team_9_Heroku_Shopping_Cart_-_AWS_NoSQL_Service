@@ -14,7 +14,7 @@ var redis   = require("redis");
 var session = require("express-session");
 var redisStore = require('connect-redis')(session);
 var bodyParser = require('body-parser');
-var client  = redis.createClient(6379,'52.90.48.71');
+var client  = redis.createClient(6379,'54.164.75.106');
 client.on('connect', function() {
     console.log('connected to redis');
 });
@@ -49,7 +49,7 @@ app.use(express.cookieParser());
 app.use(session({
     secret: 'ssshhhhh',
     // create new redis store.
-    store: new redisStore({ host: '52.90.48.71', port: 6379, client: client}),
+    store: new redisStore({ host: '54.164.75.106', port: 6379, client: client}),
     saveUninitialized: false,
     resave: false
 }));
