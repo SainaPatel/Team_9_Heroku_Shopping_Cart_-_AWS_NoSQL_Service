@@ -31,6 +31,8 @@ exports.checkLogin = function(req,res){
 		    			{
 		    			console.log("inside3");
 		    			//res.send("Login Successful");
+		    			req.session.email=doc_email;
+		    			req.session.name=body.rows[0].value.first_name+" "+body.rows[0].value.last_name;
 		    			console.log("Login successful " +doc_email +" "+password);
 		    			res.render('logged_in');
 		    			}

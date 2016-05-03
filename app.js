@@ -8,10 +8,16 @@ var express = require('express')
 , user = require('./routes/user')
 , http = require('http')
 , path = require('path');
-
+var redis   = require("redis");
 //URL for the sessions collections in mongoDB
 //var mongoSessionConnectURL = "mongodb://localhost:27017/login";
-var expressSession = require("express-session");
+var session = require("express-session");
+var redisStore = require('connect-redis')(session);
+var bodyParser = require('body-parser');
+var client  = redis.createClient(6379,'52.90.48.71');
+client.on('connect', function() {
+    console.log('connected to redis');
+});
 //var mongoStore = require("connect-mongo")(expressSession);
 //var mongo = require("./routes/mongo");
 var login = require("./routes/login");
@@ -27,7 +33,7 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 app.use(express.favicon());
 app.use(express.logger('dev'));
-app.use(express.bodyParser());
+//app.use(express.bodyParser());
 app.use(express.methodOverride());
 //app.use(expressSession({
 //	secret: 'cmpe273_teststring',
@@ -39,6 +45,16 @@ app.use(express.methodOverride());
 //		url: mongoSessionConnectURL
 //	})
 //}));
+app.use(express.cookieParser());
+app.use(session({
+    secret: 'ssshhhhh',
+    // create new redis store.
+    store: new redisStore({ host: '52.90.48.71', port: 6379, client: client}),
+    saveUninitialized: false,
+    resave: false
+}));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
@@ -49,7 +65,20 @@ if ('development' === app.get('env')) {
 }
 
 //GET Requests
-app.get('/', routes.index);
+//app.get('/', routes.index);
+
+
+app.get('/',function(req,res){  
+    // create new session object.
+    if(req.session.email) {
+        // if email key is sent redirect.
+        //res.redirect('/homepage');
+    	res.render('logged_in');
+    } else {
+        // else go to home page.
+        res.render('login.ejs', { 'title': "TheBookShelf", 'rows':"", 'msg':""});
+    }
+});
 app.get('/users', user.list);
 app.get('/homepage',login.redirectToHomepage);
 app.get('/viewProfile',customer.viewProfile);
