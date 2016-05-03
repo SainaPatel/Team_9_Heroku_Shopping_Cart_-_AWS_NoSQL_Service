@@ -22,6 +22,7 @@
 </style>
 <script src="angularjs/customerController.js"></script>
 <script src="angularjs/book.js"></script>
+<script src="angularjs/angular.ng-modules.js"></script>
 </head>
 <body>
 
@@ -33,7 +34,7 @@
 				alt="Amazon logo"> 
 				</a>
 		</div>
-<div class="dropdown col-sm-2" ng-app="CustomerApp"
+<div class="dropdown col-sm-2" ng-module="CustomerApp"
 		ng-controller="CustomerController">
   <button class="btn dropdown-toggle btn-success" type="button" data-toggle="dropdown">My Account
   <span class="caret"></span></button>
@@ -75,7 +76,7 @@
 					</ul>
 				</div>
 				<div class="input-group col-sm-9">
-					<div class="row" ng-app="home_search_book" ng-controller="home_search_book">
+					<div class="row"  ng-module="home_search_book" ng-controller="home_search_book">
 
 
 						<select type="text" ng-model="searchBy">
@@ -284,11 +285,6 @@
 				<br />
 			</div>
 		</div>
-	</div>
-
-	<div style="background-color: white;" ng-app="CustomerApp"
-		ng-controller="CustomerController">
-		<input type="button" value="View Profile" ng-click="viewProfile()">
 	</div>
 </body>
 </html>
