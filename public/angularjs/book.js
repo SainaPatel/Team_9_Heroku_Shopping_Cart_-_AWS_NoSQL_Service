@@ -27,6 +27,7 @@ search_book.controller('search_book', function($scope, $http) {
 			$scope.rows=[];
 		});
 	};
+	
 });
 
 
@@ -87,17 +88,7 @@ console.log("In home_search_book controller");
 		console.log("inside");
 		
 		$window.location="/home_search_book?searchBy="+$scope.searchBy+"&searchValue="+$scope.searchValue;
-		//$location.path('/home_search_book').search({param: $scope.searchBy});
-		/*$http({
-			method : "POST",
-			url : '/home_search_book',
-			data : {
-				"searchBy" : $scope.searchBy,
-				"searchValue":$scope.searchValue
-			}
-		}).success(function(data){
-			console.log(data.rows);
-		});*/
+	
 	};
 });
 
