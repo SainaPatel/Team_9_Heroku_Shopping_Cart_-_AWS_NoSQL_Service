@@ -77,6 +77,7 @@ app.get('/',function(req,res){
     } else {
         // else go to home page.
         res.render('login.ejs', { 'title': "TheBookShelf", 'rows':"", 'msg':""});
+        //res.render('search_book.ejs');
     }
 });
 app.get('/users', user.list);
@@ -85,16 +86,16 @@ app.get('/viewProfile',customer.viewProfile);
 app.get('/renderOrderPage',customer.renderOrderPage);
 app.get('/getProfileDetails/:email',customer.getProfileDetails);
 app.get('/getOrderDetails/:customerID',customer.getOrderDetails);
-
+app.get('/home_search_book',book.home_search_book);
+app.get('/viewCart',cart.viewCart);
 //POST Requests
 app.post('/signup',signup.signup);
 app.post('/checklogin', login.checkLogin);
 app.post('/logout', login.logout);
 app.post('/select_category',book.select_category);
 app.get('/select_category',book.select_category);
-app.post('/search_book',book.search_book);
-app.get('/home_search_book',book.home_search_book);
-app.get('/viewCart',cart.viewCart);
+app.get('/search_book/:searchBy/:searchValue',book.search_book);
+
 app.post('/addToCart',cart.addToCart);
 app.post('/removeFromCart',cart.removeFromCart);
 app.post('/editProfile',customer.editProfile);

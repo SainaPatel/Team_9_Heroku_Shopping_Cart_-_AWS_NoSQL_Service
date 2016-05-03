@@ -11,12 +11,9 @@ search_book.controller('search_book', function($scope, $http) {
 	$scope.submit = function() {
 		console.log("inside");
 		$http({
-			method : "POST",
-			url : '/search_book',
-			data : {
-				"searchBy" : $scope.searchBy,
-				"searchValue":$scope.searchValue
-			}
+			method : "GET",
+			url : '/search_book/'+$scope.searchBy+'/'+$scope.searchValue,
+			
 		}).success(function(data) {
 			if(data.status_code==200){
 				$scope.rows=data.rows;

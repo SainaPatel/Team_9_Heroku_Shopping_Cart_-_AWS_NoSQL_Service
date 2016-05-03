@@ -77,8 +77,8 @@ exports.search_book = function(req,res)
 {
 	
 	
-	var searchValue=req.param('searchValue');
-	var searchBy=req.param('searchBy');
+	var searchValue=req.params.searchValue;
+	var searchBy=req.params.searchBy;
 	var view_name;
 	var view_design;
 	console.log("inside search book"+searchValue+' '+searchBy);
