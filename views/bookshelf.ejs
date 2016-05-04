@@ -34,13 +34,13 @@
 				src="http://intertwingly.net/projects/AWDwR3/data/images/logo.png?1324774743"
 				alt="Amazon logo"> </a>
 				<div class="container-fluid" style="color:white" ng-module="CustomerApp"
-		ng-controller="CustomerController" ng-show="<%=!user%>">
+		ng-controller="CustomerController" ng-show="<%=!user.name%>">
 				 Already an TheBookShelf customer?
 				 <a href="" style="color: white" ng-click=login()><u>Sign in</u></a>
 				 </div>
 				 </div>
-		<div class="dropdown col-sm-2" ng-module="CustomerApp" ng-controller="CustomerController" ng-show="<%=user%>">
-  <button class="btn dropdown-toggle btn-success" type="button" data-toggle="dropdown">My Account
+		<div class="dropdown col-sm-2" ng-module="CustomerApp" ng-controller="CustomerController" ng-show="<%=JSON.stringify(user.name)%>">
+  <button class="btn dropdown-toggle btn-success" type="button" data-toggle="dropdown"><%=user.name%>
   <span class="caret"></span></button>
   <ul class="dropdown-menu">
     <li><a href="" ng-click=viewProfile()>My Profile</a></li>
@@ -102,27 +102,33 @@
 							<li data-target="#myCarousel" data-slide-to="1"></li>
 							<li data-target="#myCarousel" data-slide-to="2"></li>
 							<li data-target="#myCarousel" data-slide-to="3"></li>
+							<li data-target="#myCarousel" data-slide-to="4"></li>
 						</ol>
 						<!-- Wrapper for slides -->
 						<div class="carousel-inner" role="listbox" id="slides">
 							<div class="item active">
-								<img src="http://www.uglydogbooks.com/wp-content/uploads/2014/04/books.jpg"
-									alt="Chania" width="60" height="30" ng-click="go_to_();">
+								<img src="http://blog.sciencemuseum.org.uk/wp-content/uploads/2013/08/Picture-1661.jpg"
+									alt="Chania" width="60" height="30" ng-click="go_to_category('Science');">
 							</div>
 							<div class="item">
 								<img
 									src="http://images.clipartpanda.com/books-20clipart-books-for-clip-art-9.jpg"
-									alt="Chania" width="60" height="45">
+									alt="Chania" width="60" height="45" ng-click="go_to_category('Fiction');">
 							</div>
 							<div class="item">
 								<img
 									src="https://upload.wikimedia.org/wikipedia/commons/7/76/Urval_av_de_bocker_som_har_vunnit_Nordiska_radets_litteraturpris_under_de_50_ar_som_priset_funnits_(2).jpg"
-									alt="Flower" width="60" height="45">
+									alt="Flower" width="60" height="45" ng-click="go_to_category('Literature');">
 							</div>
 							<div class="item">
 								<img
 									src="http://homekeyorganization.com/wp-content/uploads/2013/01/Colorful-books.jpg"
-									alt="Flower" width="60px" height="45">
+									alt="Flower" width="60px" height="45" ng-click="go_to_category('Biography');">
+							</div>
+							<div class="item">
+								<img
+									src="http://homekeyorganization.com/wp-content/uploads/2013/01/Colorful-books.jpg"
+									alt="Flower" width="60px" height="45" ng-click="go_to_category('Computer');">
 							</div>
 						</div>
 						<!-- Left and right controls -->

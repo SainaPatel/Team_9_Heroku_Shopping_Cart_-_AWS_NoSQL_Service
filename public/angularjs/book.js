@@ -84,6 +84,13 @@ $scope.searchBy="";
 $scope.searchValue="";
 $scope.rows=[];
 //console.log("inside");
+
+$scope.go_to_category = function(value){
+	//alert("aaya");
+	$scope.searchBy = "Category";
+	$scope.searchValue = value;
+	$scope.submit();
+}
 $scope.unexpected_error = true;
 
 	$scope.searchBy="Category";
