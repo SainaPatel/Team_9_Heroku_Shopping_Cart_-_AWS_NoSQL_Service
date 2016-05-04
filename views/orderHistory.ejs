@@ -12,11 +12,13 @@
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	
 <!-- Loading the AngularJS file from /public/angularJS folder -->
-<script src="/angularjs/customerController.js"></script>
+    <script src="angularjs/book.js"></script>
+      <script src="angularjs/customerController.js"></script>
+      <script src="angularjs/angular.ng-modules.js"></script>
 </head>
 <body>
 
-<div ng-app="CustomerApp" ng-controller="CustomerController">
+<div ng-module="CustomerApp,home_search_book" ng-controller="CustomerController">
 <nav class="navbar navbar-default navbar-fixed-top"
 		style="background-color: #484848; padding: 10px">
 		<div class="container-fluid col-sm-10" style="color: white">
@@ -34,11 +36,118 @@
   </ul>
 </div>	
 	</nav>
+		<div ng-controller="home_search_book">
+         <div class="row" ng-init="rows=<%=JSON.stringify(rows)%>">
+            <div class="col-md-12">
+               <div class="row">
+                  <br><br><br><br><br>
+                  <div class="col-sm-3">
+                  </div>
+                  <div class="col-sm-6">
+                     <div align = "center">
+                        <select type="text" ng-model="searchBy" style="padding:5px; width:200px;">
+                           <option value="Category" selected>Category</option>
+                           <option value="Author">Author</option>
+                           <option value="Title">Title</option>
+                        </select>
+                        <select name="category" ng-model="searchValue" ng-show="searchBy=='Category'"  style="padding:5px; width:200px;">
+                           <option value="Science" selected>Science</option>
+                           <option value="Fiction">Fiction</option>
+                           <option value="Literature">Literature</option>
+                           <option value="Biography">Biography</option>
+                           <option value="Computer">Computer</option>
+                        </select>
+                        <input id="myinput" type="text" ng-model="searchValue"
+                           ng-hide="searchBy=='Category'"  style="padding:5px; width:200px;"/> <input type="submit"
+                           class="btn btn-success" ng-click="submit();" value="Go" />
+                     </div>
+                  </div>
+                  <div class="col-sm-3"></div>
+               </div>
+               <div class="row">
+               <div class="col-sm-2">
+               </div>
+                  <div class="col-md-4" style="margin: 10px;">
+                     <table class="table table-bordered" style="background-color:lavenderblush;">
+                        <tr ng-repeat="row in rows" ng-if="$even">
+                           <td><img height="150px" width="100px" alt=""
+                              src="images/{{row.doc.book_image}}"></td>
+                           <td>
+                              <table>
+                                 <tr>
+                                    <td>Name:</td>
+                                    <td>{{row.doc.book_name}}</td>
+                                 </tr>
+                                 <tr>
+                                    <td>Description:</td>
+                                    <td>{{row.doc.book_description}}</td>
+                                 </tr>
+                                 <tr>
+                                    <td>Price:</td>
+                                    <td>$ {{row.doc.book_price}}</td>
+                                 </tr>
+                                 <tr>
+                                    <td>Category:</td>
+                                    <td>{{row.doc.book_category}}</td>
+                                 </tr>
+                                 <tr>
+                                    <td>Author:</td>
+                                    <td>{{row.doc.book_author}}</td>
+                                 </tr>
+                              </table>
+                              <button class="btn-link"><img
+                  src="https://images-na.ssl-images-amazon.com/images/G/01/omaha/images/buttons/refresh/btn-atc-mini._V134697584_.png">
+                              </button>
+                           </td>
+                        </tr>
+                     </table>
+                  </div>
+                  <div class="col-md-4" style="margin: 10px;">
+                     <table class="table table-bordered" style="background-color:lavenderblush;">
+                        <tr ng-repeat="row in rows" ng-if="$odd">
+                           <td><img height="150px" width="100px" alt=""
+                              src="images/{{row.doc.book_image}}"></td>
+                           <td>
+                              <table>
+                                 <tr>
+                                    <td>Name:</td>
+                                    <td>{{row.doc.book_name}}</td>
+                                 </tr>
+                                 <tr>
+                                    <td>Description:</td>
+                                    <td>{{row.doc.book_description}}</td>
+                                 </tr>
+                                 <tr>
+                                    <td>Price:</td>
+                                    <td>$ {{row.doc.book_price}}</td>
+                                 </tr>
+                                 <tr>
+                                    <td>Category:</td>
+                                    <td>{{row.doc.book_category}}</td>
+                                 </tr>
+                                 <tr>
+                                    <td>Author:</td>
+                                    <td>{{row.doc.book_author}}</td>
+                                 </tr>
+                              </table>
+                              <button class="btn-link"><img
+                  src="https://images-na.ssl-images-amazon.com/images/G/01/omaha/images/buttons/refresh/btn-atc-mini._V134697584_.png">
+</button>
+                           </td>
+                        </tr>
+                     </table>
+                  </div>
+                  <div class="col-sm-2">
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div> 
 	<div class="section text-center head" ng-init="getOrderDetails()">
 	
 		<div class="col col-md-12 container-fluid mycontainer"
 			style="padding-left: 5%;">
-<br><br><br><br>
+
 
 			<div class="row">
 					<div class="col-xs-8 col-xs-offset-2">
