@@ -89,6 +89,22 @@ app.get('/select_category',book.select_category);
 app.get('/search_book/:searchBy/:searchValue',book.search_book);
 
 app.post('/addToCart',cart.addToCart);
+
+app.post('/addToCart',function(req,res){ 
+		
+    // create new session object.
+    if(req.session.email) {
+        // if email key is sent redirect.
+    	
+        //res.redirect('/homepage');
+    	res.render('login');
+    	res.render('bookshelf',{"user":req.session});
+    } else {
+        // else go to home page.
+        res.render('bookshelf', {"user":"", 'rows':"", 'msg':""});
+        //res.render('search_book.ejs');
+    }
+});
 app.post('/removeFromCart',cart.removeFromCart);
 app.post('/editProfile',customer.editProfile);
 app.post('/changeQuantity',cart.changeQuantity);

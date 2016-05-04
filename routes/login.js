@@ -35,6 +35,7 @@ exports.checkLogin = function(req,res){
 		    			req.session.name=body.rows[0].value.first_name+" "+body.rows[0].value.last_name;
 		    			req.session.customer_id=body.rows[0].value._id;
 		    			console.log("Login successful " +doc_email +" "+password +" id " +req.session.customer_id);
+		    			
 		    			res.render('bookshelf',{'user':req.session});
 		    			}
 		    		else
