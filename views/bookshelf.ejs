@@ -1,4 +1,4 @@
-
+		
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,6 +32,16 @@
 				alt="Amazon logo"> </a> Already an TheBookShelf customer?
 				 <a href="" style="color: white" ng-click=login()><u>Sign in</u></a>
 		</div>
+		<div class="dropdown col-sm-2" ng-module="CustomerApp"
+		ng-controller="CustomerController">
+  <button class="btn dropdown-toggle btn-success" type="button" data-toggle="dropdown">My Account
+  <span class="caret"></span></button>
+  <ul class="dropdown-menu">
+    <li><a href="" ng-click=viewProfile()>My Profile</a></li>
+    <li><a href="" ng-click="viewOrderHistory()">View Order History</a></li>
+  </ul>
+</div>	
+		
 	</nav>
 	<br>
 	<br />
@@ -44,7 +54,7 @@
 				<div class="input-group col-sm-6">
 					<div class="row">
 
-						<select type="text" ng-model="searchBy" style="padding: 5px;width: 200px;" name="Search By">
+						<select type="text" ng-model="searchBy" style="padding: 5px;width: ;" name="Search By">
 							<option value="Category" selected>Category</option>
 							<option value="Author">Author</option>
 							<option value="Title">Title</option>
@@ -121,115 +131,6 @@
 			</div>
 
 
-			<h4 style="margin-left: 15px">
-				<br />Browse Categories
-			</h4>
-			<div class="row">
-				<div class="col-sm-3" style="margin-left: 10px">
-					<div class="panel panel-default">
-						<div class="panel-heading"
-							style="margin: 0; background-image: url(http://thumbs.ebaystatic.com/images/m/mDnvv6WXglBLKES67NGiV9Q/s-l225.jpg)">
-							<br />
-							<br />
-							<br />
-							<br />
-							<br />
-						</div>
-						<div class="panel-body">
-							<a href="" style="color: grey">History >></a><br /> <a href=""
-								style="color: grey">Mahabharat</a><br /> <a href=""
-								style="color: grey">Ashoka</a><br /> <a href=""
-								style="color: grey">Gandhi</a><br /> <a href=""
-								style="color: grey">Nehruji</a><br /> <a href=""
-								style="color: grey">Ramayan</a><br /> <a href="">Shop all ></a>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-3">
-					<div class="panel panel-default">
-						<div class="panel-heading"
-							style="margin: 0; background-image: url(http://thumbs.ebaystatic.com/images/g/fikAAOSwX~dWpmDo/s-l225.jpg)">
-							<br />
-							<br />
-							<br />
-							<br />
-							<br />
-						</div>
-						<div class="panel-body">
-							<a href="" style="color: grey">Romance >></a><br /> <a href=""
-								style="color: grey">Romeo and Juliet</a><br /> <a href=""
-								style="color: grey">Heer Ranja</a><br /> <a href=""
-								style="color: grey">Laila Majnu</a><br /> <a href=""
-								style="color: grey">51st Dates</a><br /> <a href=""
-								style="color: grey">Titanic</a><br /> <a href="">Shop all ></a>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-3">
-					<div class="panel panel-default">
-						<div class="panel-heading"
-							style="margin: 0; background-image: url(http://thumbs.ebaystatic.com/images/g/~KsAAOSwyQtV0s5G/s-l225.jpg)">
-							<br />
-							<br />
-							<br />
-							<br />
-							<br />
-						</div>
-						<div class="panel-body">
-							<a href="" style="color: grey">Suspence >></a><br /> <a href=""
-								style="color: grey">Sherlock Holmes</a><br /> <a href=""
-								style="color: grey">C.I.D</a><br /> <a href=""
-								style="color: grey">Detective Karan</a><br /> <a href=""
-								style="color: grey">It has all</a><br /> <a href=""
-								style="color: grey">Person of Interest</a><br /> <a href="">Shop
-								all ></a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-sm-3" style="margin-left: 10px">
-					<div class="panel panel-default">
-						<div class="panel-heading"
-							style="margin: 0; background-image: url(http://thumbs.ebaystatic.com/images/m/m50x13v5FQYp20UWZEAge2A/s-l225.jpg)">
-							<br />
-							<br />
-							<br />
-							<br />
-							<br />
-						</div>
-						<div class="panel-body">
-							<a href="" style="color: grey">Travel >></a><br /> <a href=""
-								style="color: grey">London</a><br /> <a href=""
-								style="color: grey">Paris</a><br /> <a href=""
-								style="color: grey">Okland</a><br /> <a href=""
-								style="color: grey">New Zealand</a><br /> <a href=""
-								style="color: grey">India</a><br /> <a href="">Shop all ></a>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-3">
-					<div class="panel panel-default">
-						<div class="panel-heading"
-							style="margin: 0; background-image: url(http://thumbs.ebaystatic.com/images/g/TjIAAOSwQYZWusWN/s-l225.jpg)">
-							<br />
-							<br />
-							<br />
-							<br />
-							<br />
-						</div>
-						<div class="panel-body">
-							<a href="" style="color: grey">Others >></a><br /> <a href=""
-								style="color: grey">Tom n Jerry</a><br /> <a href=""
-								style="color: grey">Cindrella</a><br /> <a href=""
-								style="color: grey">Object Oriented language</a><br /> <a
-								href="" style="color: grey">Digital Desgin</a><br /> <a href=""
-								style="color: grey">Donut</a><br /> <a href="">Shop all ></a>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-3"></div>
-			</div>
 		</div>
 		<div class="col-sm-3"></div>
 	</div>
