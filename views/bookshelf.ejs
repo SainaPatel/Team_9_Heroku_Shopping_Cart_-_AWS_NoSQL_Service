@@ -1,4 +1,4 @@
-
+		
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,6 +32,16 @@
 				alt="Amazon logo"> </a> Already an TheBookShelf customer?
 				 <a href="" style="color: white" ng-click=login()><u>Sign in</u></a>
 		</div>
+		<div class="dropdown col-sm-2" ng-module="CustomerApp"
+		ng-controller="CustomerController">
+  <button class="btn dropdown-toggle btn-success" type="button" data-toggle="dropdown">My Account
+  <span class="caret"></span></button>
+  <ul class="dropdown-menu">
+    <li><a href="" ng-click=viewProfile()>My Profile</a></li>
+    <li><a href="" ng-click="viewOrderHistory()">View Order History</a></li>
+  </ul>
+</div>	
+		
 	</nav>
 	<br>
 	<br />
@@ -44,7 +54,7 @@
 				<div class="input-group col-sm-6 col-lg-6">
 					<div class="row">
 
-						<select type="text" ng-model="searchBy" style="padding: 5px;width: 200px;" name="Search By">
+						<select type="text" ng-model="searchBy" style="padding: 5px;width: ;" name="Search By">
 							<option value="Category" selected>Category</option>
 							<option value="Author">Author</option>
 							<option value="Title">Title</option>
@@ -121,6 +131,7 @@
 			</div>
 
 
+<<<<<<< HEAD
 			<h4 style="margin-left: 15px">
 				<br />Browse Categories
 			</h4>
@@ -230,6 +241,8 @@
 				</div>
 				<div class="col-sm-3 col-lg-3"></div>
 			</div>
+=======
+>>>>>>> origin/master
 		</div>
 		<div class="col-sm-3 col-sm-3"></div>
 	</div>
