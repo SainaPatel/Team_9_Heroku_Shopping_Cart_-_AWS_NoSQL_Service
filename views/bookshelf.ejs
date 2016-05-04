@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Amazon Home</title>
+<title>TheBookShelf</title>
 <script
 	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 <link rel="stylesheet"
@@ -21,82 +21,58 @@
 }
 </style>
 <script src="angularjs/book.js"></script>
-<script src="angularjs/customerController.js"></script>
 </head>
-<body>
-
+<body ng-app="home_search_book" ng-controller="home_search_book">
 
 	<nav class="navbar navbar-default navbar-fixed-top"
 		style="background-color: #484848; padding: 10px">
 		<div class="container-fluid" style="color: white">
 			<a href=""><img
 				src="http://intertwingly.net/projects/AWDwR3/data/images/logo.png?1324774743"
-				alt="Amazon logo"> </a> Already an TheBookShelf customer? <a
-				href="#" style="color: white"><u>Sign in</u></a>
+				alt="Amazon logo"> </a> Already an TheBookShelf customer?
+				 <a href="" style="color: white" ng-click=login()><u>Sign in</u></a>
 		</div>
 	</nav>
 	<br>
 	<br />
 	<br />
 
-	<div class="row">
-		<div class="col-sm-9">
+	<div class="row" style="padding-top: 20px;">
+		<div class="col-sm-12">
 			<div class="row">
-				<div class="dropdown col-sm-3" style="padding-left: 15px">
-					<button class="btn btn-primary dropdown-toggle" type="button"
-						data-toggle="dropdown"
-						style="background-color: #484848; margin-left: 10px">
-						Shop <span class="caret"></span>
-					</button>
-					<ul class="dropdown-menu">
+				<div class="col-sm-3"></div>
+				<div class="input-group col-sm-6">
+					<div class="row">
 
-						<li><a href="#"><strong>History</strong><br>It all
-								started here</a></li>
-						<br>
-						<li><a href="#"><strong>Romance</strong><br>All
-								about love</a></li>
-						<br>
-						<li><a href="#"><strong>Suspence</strong><br>Secrets
-								to be found</a></li>
-						<br>
-						<li><a href="#"><strong>Travel</strong><br>It could
-								be your guide</a></li>
-						<br>
-						<li><a href="#"><strong>Others</strong><br>All stuff</a></li>
-					</ul>
-				</div>
-				<div class="input-group col-sm-9">
-					<div class="row" ng-app="home_search_book" ng-controller="home_search_book">
-
-
-						<select type="text" ng-model="searchBy">
-							<option value="Category" selected="selected">Category</option>
+						<select type="text" ng-model="searchBy" style="padding: 5px;width: 200px;" name="Search By">
+							<option value="Category" selected>Category</option>
 							<option value="Author">Author</option>
 							<option value="Title">Title</option>
-						</select> <select name="category" ng-model="searchValue"
+						</select> <select name="category" ng-model="searchValue" style="padding: 5px;width: 200px;"
 							ng-show="searchBy=='Category'">
-							<option value="Science">Science</option>
+							<option value="Science" selected>Science</option>
 							<option value="Fiction">Fiction</option>
 							<option value="Literature">Literature</option>
 							<option value="Biography">Biography</option>
 							<option value="Computer">Computer</option>
 
 
-						</select> <input id="myinput" type="text" ng-model="searchValue"
+						</select> <input id="myinput" type="text" style="height:28px; width: 200px;" placeholder="Enter keyword" ng-model="searchValue"
 							ng-hide="searchBy=='Category'" /> <input type="submit"
 							class="btn btn-success" ng-click="submit();" value="Go" />
 
 					</div>
 				</div>
+				<div class="col-sm-3"></div>
 			</div>
 			<div class="row">
 				<br />
-				<div class="container col-sm-9" style="margin-left: 10px">
+				<div class="container col-sm-12">
 					<style>
 .carousel-inner>.item>img, .carousel-inner>.item>a>img {
 	width: 100%;
 	margin: auto;
-	right-padding: 0px;
+	height: 700px;	
 }
 </style>
 					<div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -112,7 +88,7 @@
 							<div class="item active">
 								<img
 									src="http://www.uglydogbooks.com/wp-content/uploads/2014/04/books.jpg"
-									alt="Chania" width="60" height="45">
+									alt="Chania" width="60" height="30">
 							</div>
 							<div class="item">
 								<img
@@ -277,9 +253,5 @@
 		</div>
 	</div>
 
-	<div style="background-color: white;" ng-app="CustomerApp"
-		ng-controller="CustomerController">
-		<input type="button" value="View Profile" ng-click="viewProfile()">
-	</div>
 </body>
 </html>
