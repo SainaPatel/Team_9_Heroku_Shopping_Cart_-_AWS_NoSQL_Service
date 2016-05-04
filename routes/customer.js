@@ -10,7 +10,7 @@ exports.viewProfile = function(req,res){
 exports.getProfileDetails = function(req,res){
 	console.log("getProfileDetails called");
 	var test = nano.use('test');
-	var email=req.params.email;
+	var email=req.session.email;
 	
 	console.log("Email:" +email);
 	 test.view('login', 'by_email_address',{'key': email, 'include_docs': true}, function(err, body){
@@ -112,7 +112,7 @@ exports.renderOrderPage = function(req,res){
 exports.getOrderDetails = function(req,res){
 	console.log("getOrderDetails called");
 	var test = nano.use('order');
-	var id=req.params.customerID;
+	var id=req.session.customer_id;
 	console.log("ID: "+id);
 	
 	 test.view('order', 'by_customer_id',{'key': id, 'include_docs': false}, function(err, body){

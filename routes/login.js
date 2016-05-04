@@ -33,7 +33,8 @@ exports.checkLogin = function(req,res){
 		    			//res.send("Login Successful");
 		    			req.session.email=doc_email;
 		    			req.session.name=body.rows[0].value.first_name+" "+body.rows[0].value.last_name;
-		    			console.log("Login successful " +doc_email +" "+password);
+		    			req.session.customer_id=body.rows[0].value._id;
+		    			console.log("Login successful " +doc_email +" "+password +" id " +req.session.customer_id);
 		    			res.render('logged_in',{'user':req.session});
 		    			}
 		    		else
