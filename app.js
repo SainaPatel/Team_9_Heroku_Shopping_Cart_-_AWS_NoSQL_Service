@@ -9,8 +9,7 @@ var express = require('express')
 , http = require('http')
 , path = require('path');
 var redis   = require("redis");
-//URL for the sessions collections in mongoDB
-//var mongoSessionConnectURL = "mongodb://localhost:27017/login";
+
 var session = require("express-session");
 var redisStore = require('connect-redis')(session);
 var bodyParser = require('body-parser');
@@ -18,8 +17,7 @@ var client  = redis.createClient(6379,'54.164.75.106');
 client.on('connect', function() {
     console.log('connected to redis');
 });
-//var mongoStore = require("connect-mongo")(expressSession);
-//var mongo = require("./routes/mongo");
+
 var login = require("./routes/login");
 var book = require("./routes/book");
 var cart=require("./routes/cart");
@@ -35,16 +33,7 @@ app.use(express.favicon());
 app.use(express.logger('dev'));
 //app.use(express.bodyParser());
 app.use(express.methodOverride());
-//app.use(expressSession({
-//	secret: 'cmpe273_teststring',
-//	resave: false,  //don't save session if unmodified
-//	saveUninitialized: false,	// don't create session until something stored
-//	duration: 30 * 60 * 1000,    
-//	activeDuration: 5 * 60 * 1000,
-//	store: new mongoStore({
-//		url: mongoSessionConnectURL
-//	})
-//}));
+
 app.use(express.cookieParser());
 app.use(session({
     secret: 'ssshhhhh',
@@ -64,14 +53,14 @@ if ('development' === app.get('env')) {
 	app.use(express.errorHandler());
 }
 
-//GET Requests
-//app.get('/', routes.index);
+
 
 
 app.get('/',function(req,res){  
     // create new session object.
     if(req.session.email) {
         // if email key is sent redirect.
+    	
         //res.redirect('/homepage');
     	res.render('logged_in');
     } else {
@@ -104,8 +93,3 @@ app.post('/changeQuantity',cart.changeQuantity);
 http.createServer(app).listen(app.get('port'), function(){
 	console.log('Express server listening on port ' + app.get('port'));
 });  
-//connect to the mongo collection session and then createServer
-//mongo.connect(mongoSessionConnectURL, function(){
-//	console.log('Connected to mongo at: ' + mongoSessionConnectURL);
-//	
-//});
