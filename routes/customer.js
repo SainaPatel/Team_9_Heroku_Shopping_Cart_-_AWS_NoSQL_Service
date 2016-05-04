@@ -4,7 +4,7 @@ var nano=require('nano')('http://Team-9-Load-Balancer-423702890.us-east-1.elb.am
 
 exports.viewProfile = function(req,res){
 	console.log("viewProfile Called");
-	res.render("customerProfile",{'rows':""});
+	res.render("customerProfile");
 };
 
 exports.getProfileDetails = function(req,res){
@@ -106,7 +106,7 @@ exports.editProfile = function(req,res){
 
 exports.renderOrderPage = function(req,res){
 	console.log("renderOrderPage Called");
-	res.render("orderHistory",{'rows':""});
+	res.render("orderHistory");
 };
 
 exports.getOrderDetails = function(req,res){

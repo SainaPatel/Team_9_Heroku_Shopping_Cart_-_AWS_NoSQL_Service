@@ -34,7 +34,7 @@ exports.checkLogin = function(req,res){
 		    			req.session.email=doc_email;
 		    			req.session.name=body.rows[0].value.first_name+" "+body.rows[0].value.last_name;
 		    			console.log("Login successful " +doc_email +" "+password);
-		    			res.render('logged_in',{'user':req.session});
+		    			res.render('logged_in');
 		    			}
 		    		else
 		    			{
@@ -80,8 +80,3 @@ exports.logout = function(req,res)
 	res.redirect('/');
 };
 
-exports.login = function(req,res)
-{
-	console.log("Render login page");
-	res.render('login',{'msg':""});
-};
