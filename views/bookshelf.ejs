@@ -21,25 +21,29 @@
 }
 </style>
 <script src="angularjs/book.js"></script>
+<script src="angularjs/customerController.js"></script>
+ <script src="angularjs/angular.ng-modules.js"></script>
+     
 </head>
-<body ng-app="home_search_book" ng-controller="home_search_book">
+<body ng-module="home_search_book,CustomerApp", ng-controller="home_search_book">
 
 	<nav class="navbar navbar-default navbar-fixed-top"
 		style="background-color: #484848; padding: 10px">
-		<div class="container-fluid" style="color: white">
+		<div class="container-fluid col-sm-10" style="color: white">
 			<a href=""><img
 				src="http://intertwingly.net/projects/AWDwR3/data/images/logo.png?1324774743"
 				alt="Amazon logo"> </a> Already an TheBookShelf customer?
 				 <a href="" style="color: white" ng-click=login()><u>Sign in</u></a>
-		</div>
-		<div class="dropdown col-sm-2" ng-module="CustomerApp"
-		ng-controller="CustomerController">
+				 </div>
+		<div class="dropdown col-sm-2" ng-module="CustomerApp" ng-controller="CustomerController">
   <button class="btn dropdown-toggle btn-success" type="button" data-toggle="dropdown">My Account
   <span class="caret"></span></button>
   <ul class="dropdown-menu">
     <li><a href="" ng-click=viewProfile()>My Profile</a></li>
     <li><a href="" ng-click="viewOrderHistory()">View Order History</a></li>
   </ul>
+  </div>
+		
 </div>	
 		
 	</nav>
@@ -96,9 +100,8 @@
 						<!-- Wrapper for slides -->
 						<div class="carousel-inner" role="listbox" id="slides">
 							<div class="item active">
-								<img
-									src="http://www.uglydogbooks.com/wp-content/uploads/2014/04/books.jpg"
-									alt="Chania" width="60" height="30">
+								<img src="http://www.uglydogbooks.com/wp-content/uploads/2014/04/books.jpg"
+									alt="Chania" width="60" height="30" ng-click="go_to_">
 							</div>
 							<div class="item">
 								<img

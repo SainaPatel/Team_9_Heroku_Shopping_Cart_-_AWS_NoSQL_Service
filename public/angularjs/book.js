@@ -80,6 +80,12 @@ var home_search_book = angular.module('home_search_book', []);
 //defining the login controller
 home_search_book.controller('home_search_book', function($scope, $http,$window,$location) {
 console.log("In home_search_book controller");
+$scope.searchBy="";
+$scope.searchValue="";
+$scope.rows=[];
+//console.log("inside");
+$scope.unexpected_error = true;
+
 	$scope.searchBy="Category";
 	//$scope.searchValue="";
 	console.log("inside");
