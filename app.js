@@ -62,10 +62,10 @@ app.get('/',function(req,res){
         // if email key is sent redirect.
     	
         //res.redirect('/homepage');
-    	res.render('logged_in');
+    	res.render('bookshelf',{"user":req.session});
     } else {
         // else go to home page.
-        res.render('bookshelf', { 'title': "TheBookShelf", 'rows':"", 'msg':""});
+        res.render('bookshelf', {"user":"", 'rows':"", 'msg':""});
         //res.render('search_book.ejs');
     }
 });
@@ -78,6 +78,8 @@ app.get('/getOrderDetails',customer.getOrderDetails);
 app.get('/home_search_book',book.home_search_book);
 app.get('/viewCart',cart.viewCart);
 app.get('/login', login.login);
+app.get('/logout', login.logout);
+
 //POST Requests
 app.post('/signup',signup.signup);
 app.post('/checklogin', login.checkLogin);

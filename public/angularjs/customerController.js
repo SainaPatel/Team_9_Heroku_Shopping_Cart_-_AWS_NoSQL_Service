@@ -7,6 +7,11 @@ $scope.viewProfile=function(){
 		console.log("In viewProfile controller");
 		$window.location="/viewProfile";
 	};
+	$scope.LogOut=function(){
+		//console.log("In viewProfile controller");
+		
+			window.location="/logout";
+		};
 
 	
 //get the profile details when the page is loaded
