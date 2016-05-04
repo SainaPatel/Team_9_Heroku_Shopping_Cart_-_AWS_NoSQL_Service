@@ -77,6 +77,7 @@ exports.redirectToHomepage = function(req,res)
 //Logout the user - invalidate the session
 exports.logout = function(req,res)
 {
+	console.log("in logout");
 	req.session.destroy();
 	res.redirect('/');
 };
