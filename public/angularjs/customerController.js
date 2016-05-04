@@ -11,12 +11,10 @@ $scope.viewProfile=function(){
 	
 //get the profile details when the page is loaded
 $scope.getProfileDetails=function(){
-			$scope.email="ritika.shetty@sjsu.edu";
-				console.log("Email passed" +$scope.email);
+	
 		$http({
 			method : "GET",
-			url : '/getProfileDetails/'+$scope.email
-			
+			url : '/getProfileDetails'
 		}).success(function(data) {
 			console.log("in success Customer Controller: "+JSON.stringify(data));
 			$scope.userName=data.result.user_name;
@@ -76,11 +74,10 @@ $scope.updateProfile=function(first_name,last_name,address,zipcode,email,passwor
 $scope.getOrderDetails=function(req,res){
     	
 		console.log("In getOrderDetails controller");
-		$scope.id="C_001";
     	
 		$http({
 			method : "GET",
-			url : '/getOrderDetails/'+$scope.id
+			url : '/getOrderDetails'
 			
 		}).success(function(data) {
 			
