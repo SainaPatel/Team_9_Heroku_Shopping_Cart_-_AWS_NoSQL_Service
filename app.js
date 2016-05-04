@@ -62,10 +62,10 @@ app.get('/',function(req,res){
         // if email key is sent redirect.
     	
         //res.redirect('/homepage');
-    	res.render('bookshelf',{"user":req.session});
+    	res.render('viewCart',{"user":req.session});
     } else {
         // else go to home page.
-        res.render('bookshelf', {"user":"", 'rows':"", 'msg':""});
+        res.render('viewCart', {"user":"", 'rows':"", 'msg':""});
         //res.render('search_book.ejs');
     }
 });
@@ -108,6 +108,8 @@ app.post('/addToCart',function(req,res){
 app.post('/removeFromCart',cart.removeFromCart);
 app.post('/editProfile',customer.editProfile);
 app.post('/changeQuantity',cart.changeQuantity);
+app.post('/checkout',cart.checkout);
+app.post('/confirm',cart.confirm);
 http.createServer(app).listen(app.get('port'), function(){
 	console.log('Express server listening on port ' + app.get('port'));
 });  

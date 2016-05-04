@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Amazon Fresh SignUp</title>
+<title>TheBookShelf</title>
 <script
 	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 <link rel="stylesheet"
@@ -23,7 +23,10 @@
 <script type="text/javascript">
 	var app = angular.module('myApp', []);
 	app.controller('Controller', function($scope, $http) {
-
+		$scope.proceed=true;
+		$scope.place=false;
+		$scope.order_placed=false;
+		$scope.message="";
 		$scope.viewCart = function() {
 			$http({
 				method : "GET",
@@ -35,6 +38,7 @@
 				$scope.book_cost=data.product_details.book_cost;
 				$scope.book_quantity=1; */
 				$scope.product_details = data.product_details;
+				console.log(JSON.stringify($scope.product_details));
 				//  $scope.quantity=data.product_details.value.quantity;
 
 			})
@@ -69,6 +73,46 @@
 			})
 			
 		}
+		
+		$scope.checkout = function(product_details){
+	console.log("Checkout: "+JSON.stringify(product_details[0].value.customer_id));
+	$scope.customer_id=	JSON.stringify(product_details[0].value.customer_id);
+	console.log("Customer ID:" +$scope.customer_id);
+	$http({
+				method : "POST",
+				url : '/checkout',
+				data : {
+					"customer_id" : $scope.customer_id
+				}
+			}).success(function(data){
+				$scope.proceed=false;
+				$scope.place=true;
+				$scope.customer=data.credit_card_details;
+				console.log("checkout success" +JSON.stringify($scope.customer.email) );
+			})
+			
+		}
+		
+		$scope.confirm = function(product_details){
+			console.log("confirm: "+JSON.stringify(product_details[0].value.customer_id));
+			$scope.customer_id=	JSON.stringify(product_details[0].value.customer_id);
+			console.log("Customer ID:" +$scope.customer_id);
+			$http({
+						method : "POST",
+						url : '/confirm',
+						data : {
+							"product_details" : product_details
+						}
+					}).success(function(data){
+						$scope.proceed=false;
+						$scope.place=false;
+						$scope.order_placed=true;
+						$scope.customer=data.credit_card_details;
+						$scope.message=data.msg;
+						console.log("checkout success" +JSON.stringify($scope.message) );
+					})
+					
+				}
 
 	})
 </script>
@@ -93,66 +137,6 @@
 	<br>
 	<br>
 	<br>
-	<div class="row">
-		<div class="col-sm-1">
-			<div class="dropdown" style="padding-left: 15px">
-				<button class="btn btn-primary dropdown-toggle" type="button"
-					data-toggle="dropdown" style="width: 130px">
-					Shop <span class="caret"></span>
-				</button>
-				<ul class="dropdown-menu">
-					<li><a href="#"><strong>History</strong><br>It all
-							started here</a></li>
-					<br>
-					<li><a href="#"><strong>Romance</strong><br>All about
-							love</a></li>
-					<br>
-					<li><a href="#"><strong>Suspence</strong><br>Secrets
-							to be found</a></li>
-					<br>
-					<li><a href="#"><strong>Travel</strong><br>It could
-							be your guide</a></li>
-					<br>
-					<li><a href="#"><strong>Others</strong><br>All stuff</a></li>
-				</ul>
-			</div>
-		</div>
-		<div class="col-sm-6">
-
-
-
-			<div class="panel panel-default">
-				<div class="panel-heading">
-
-					<div class="dropdown" style="padding-left: 15px">
-						<button class="btn btn-default dropdown-toggle" type="button"
-							data-toggle="dropdown">
-							All <span class="caret"></span>
-						</button>
-						<ul class="dropdown-menu">
-							<li><a href="#">All</a></li>
-							<li><a href="#">Amazon.com items only</a></li>
-
-						</ul>
-						<input type="text" placeholder="Search Amazon Fresh"
-							style="width: 850px" style="style="background-color:#464646">
-
-						<button class="btn btn-default" placeholder="Search Amazon Fresh">go</button>
-					</div>
-
-				</div>
-			</div>
-
-		</div>
-		<div class="col-sm-5"></div>
-	</div>
-
-
-
-
-
-
-
 	<br>
 	<br>
 
@@ -164,7 +148,39 @@
 	<div class="row">
 		<div class="col-sm-1"></div>
 		<div class="col-sm-9">
-			<table class="table">
+		{{message}}
+		<div ng-show="place">
+		<p align="center"><b>Payment details</b></p>
+		<table class="table">
+					<tr>
+						<td style="border-top: none;">Customer Name</td>
+						<td style="border-top: none;">{{customer.first_name}}  &nbsp&nbsp {{customer.last_name}}</td>
+					</tr>
+					<tr>
+						<td style="border-top: none;">Card Number</td>
+						<td style="border-top: none;">{{customer.card_no}}</td>
+					</tr>
+					<tr>
+						<td style="border-top: none;">CVV</td>
+						<td style="border-top: none;">***</td>
+					</tr>
+					<tr>
+						<td style="border-top: none;">Expiry</td>
+						<td style="border-top: none;">{{customer.expiry}}</td>
+					</tr>
+					<tr>
+						<td style="border-top: none;">Shipping Address</td>
+						<td style="border-top: none;">{{customer.address}}</td>
+					</tr>
+					<tr>
+						<td style="border-top: none;">Contact Number</td>
+						<td style="border-top: none;">{{customer.phone_no}}</td>
+					</tr>
+			</table>
+			<br>
+			<p align="center"><b>Order Details</b><br></p>
+		</div>
+			<table class="table" ng-show="!order_placed">
 				<thead>
 					<tr>
 						<th></th>
@@ -200,19 +216,38 @@
 		</div>
 		<div class="col-sm-2"></div>
 	</div>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-
+<br><br>
+	<div class=" row">
+	<div class="col-sm-5"></div>
+	<div class="col-sm-2">
+	<button type="button" class="btn btn-success btn-lg" ng-click=checkout(product_details) ng-show="proceed">Proceed to Checkout</button>
 	</div>
+	<div class="col-sm-5"></div>
+	</div>
+
+	<div class="row">
+	<div class="col-sm-4"></div>
+	<div class="col-sm-1">
+	<button type="button" class="btn btn-success btn-md" ng-click=confirm(product_details) ng-show="place">Confirm Order</button>
+	</div>
+	<div class="col-sm-2"></div>
+	<div class="col-sm-1">
+	<button type="button" class="btn btn-danger btn-md" ng-click=cancel(product_details) ng-show="place">Cancel Order</button>
+	</div>
+	<div class="col-sm-4"></div>
+	</div>
+
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
 
 	<div class="row">
 		<div class="panel-body"

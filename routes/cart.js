@@ -136,3 +136,52 @@ exports.removeFromCart=function(req,res)
 		
 	});
 };
+
+
+//checkout display order details and credit card details and confirm and cancel buttons
+exports.checkout=function(req,res)
+{
+	console.log("inside checkout" +req.body.customer_id);
+	var _id=req.body.customer_id;
+	var user=nano.use('test');
+	user.get(_id, function(err,body){
+		if(err)
+		{
+		console.log('[test.get] ', err.message);
+        return;
+		}
+		else
+			{
+			console.log("Customer details:" +body);
+			res.send({"credit_card_details": body});
+			}
+});
+};
+
+exports.confirm=function(req,res)
+{
+	console.log("inside confirm" +req.body.product_details);
+	var date=new Date();
+	console.log(date);
+	var order=nano.use('order');
+	var cart=nano.use('cart');
+	for (var i = 0; i < req.body.product_details.length; i++) {
+		console.log("Product " +i+ ": "+JSON.stringify(req.body.product_details[i].value.customer_id));
+		var customer_id=JSON.stringify(req.body.product_details[i].value.customer_id);
+		var items=JSON.stringify(req.body.product_details[i].value.book_name);
+		var amount=JSON.stringify(req.body.product_details[i].value.book_cost);
+		order.insert({'customer_id' : customer_id , 'items':items, 'date':date, 'amount':amount },'',function(err,body,header){
+			if (err) {
+				console.log('[order.insert] ', err.message);
+			//	res.render("viewCart");
+			}else
+				{
+				res.send({"msg": "Congratulations!! Your order has been Placed Successfully. It should reach you within 2 weeks"});
+				console.log("you have inserted the record");
+				console.log(body);
+				}
+		});
+		//remove from cart and reduce inventory
+	}
+	
+};
