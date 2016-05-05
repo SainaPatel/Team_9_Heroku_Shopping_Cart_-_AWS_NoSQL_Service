@@ -62,10 +62,10 @@ app.get('/',function(req,res){
         // if email key is sent redirect.
     	
         //res.redirect('/homepage');
-    	res.render('viewCart',{"user":req.session});
+    	res.render('bookshelf',{"user":req.session});
     } else {
         // else go to home page.
-        res.render('viewCart', {"user":"", 'rows':"", 'msg':""});
+        res.render('bookshelf', {"user":"", 'rows':"", 'msg':""});
         //res.render('search_book.ejs');
     }
 });

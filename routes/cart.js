@@ -195,3 +195,25 @@ exports.confirm=function(req,res)
 	
 	res.send({"msg": "Congratulations!! Your order has been Placed Successfully. It should reach you within 2 weeks"});
 };
+
+
+/*exports.cancel=function(req,res)
+{
+	console.log("inside cancel" +req.body.product_details);
+	var cart=nano.use('cart');
+	for (var i = 0; i < req.body.product_details.length; i++) {
+		console.log("Product " +i+ ": "+JSON.stringify(req.body.product_details[i].value.customer_id));
+			
+		cart.destroy(req.body.product_details[i].value._id,req.body.product_details[i].value._rev,function(err,body,header){
+			if (!err) {
+				console.log("you have deleted the record");
+				console.log(body);
+			  }else{
+				  console.log('Error',err);
+				  res.send({"msg": "Error Processing your order, please try again"});
+			  }
+		});
+	}
+	
+	res.send({"msg": "Your order has been Cancelled"});
+};*/

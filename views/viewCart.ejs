@@ -107,10 +107,17 @@
 						$scope.proceed=false;
 						$scope.place=false;
 						$scope.order_placed=true;
-						$scope.customer=data.credit_card_details;
 						$scope.message=data.msg;
 						console.log("checkout success" +JSON.stringify($scope.message) );
 					})
+					
+				}
+		
+		$scope.cancel = function(product_details){
+			$scope.proceed=false;
+			$scope.place=false;
+			$scope.order_placed=true;
+			$scope.message="Your order has been cancelled, you can still view the items in your cart";
 					
 				}
 
@@ -232,7 +239,7 @@
 	</div>
 	<div class="col-sm-2"></div>
 	<div class="col-sm-1">
-	<button type="button" class="btn btn-danger btn-md" ng-click=cancel(product_details) ng-show="place">Cancel Order</button>
+	<button type="button" class="btn btn-danger btn-md" ng-click=cancel() ng-show="place">Cancel Order</button>
 	</div>
 	<div class="col-sm-4"></div>
 	</div>
