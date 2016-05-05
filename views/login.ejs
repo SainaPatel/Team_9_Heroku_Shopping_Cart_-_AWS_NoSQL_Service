@@ -16,11 +16,16 @@
 	padding-bottom: 70px
 }
 </style>
+<script src="angularjs/book.js"></script>
+<script src="angularjs/customerController.js"></script>
+ <script src="angularjs/angular.ng-modules.js"></script>
+     
    </head>
    <body>
 		<nav class="navbar navbar-default navbar-fixed-top" style="background-color:#484848; padding:10px">
-			<div class="container-fluid">
-               <a href=""><img src="http://intertwingly.net/projects/AWDwR3/data/images/logo.png?1324774743" alt="Amazon logo"></a>
+			<div class="container-fluid" ng-module="CustomerApp"
+		ng-controller="CustomerController">
+               <a href="" ng-click ="homepage();"><img src="http://intertwingly.net/projects/AWDwR3/data/images/logo.png?1324774743" alt="Amazon logo"></a>
 			</div>
 		</nav>
 	    <br/><br/>

@@ -31,12 +31,14 @@
 		style="background-color: #484848; padding: 10px">
 		<div class="container-fluid col-sm-10" style="color: white">
 				<div class="container-fluid" style="color:white" ng-module="CustomerApp"
-		ng-controller="CustomerController" ng-show="<%=!user.name%>">
-		<a href=""><img
+		ng-controller="CustomerController">
+		<a href="" ng-click ="homepage();"><img
 				src="http://intertwingly.net/projects/AWDwR3/data/images/logo.png?1324774743"
 				alt="Amazon logo"> </a>
+				<div  ng-show="<%=!user.name%>">
 				 Already an TheBookShelf customer?
 				 <a href="" style="color: white" ng-click=login()><u>Sign in</u></a>
+				 </div>
 				 </div>
 				 </div>
 		<div class="dropdown col-sm-2" ng-module="CustomerApp" ng-controller="CustomerController" ng-show="<%=JSON.stringify(user.name)%>">

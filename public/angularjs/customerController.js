@@ -2,7 +2,10 @@ var app = angular.module('CustomerApp', []);
 app.controller('CustomerController', function($scope,$http,$location,$window) {
 	console.log("In Customer Controller");
 
-
+$scope.homepage = function(){
+//	alert("aaya");
+	window.location="/";
+}
 $scope.viewProfile=function(){
 		console.log("In viewProfile controller");
 		$window.location="/viewProfile";
