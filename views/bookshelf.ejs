@@ -27,7 +27,7 @@
 </head>
 <body ng-module="home_search_book,CustomerApp", ng-controller="home_search_book">
 
-	<nav class="navbar navbar-default navbar-fixed-top"
+	<nav class="navbar navbar-default navbar-fixed-top" 
 		style="background-color: #484848; padding: 10px">
 		<div class="container-fluid col-sm-10" style="color: white">
 				<div class="container-fluid" style="color:white" ng-module="CustomerApp"
@@ -35,23 +35,28 @@
 		<a href="" ng-click ="homepage();"><img
 				src="http://intertwingly.net/projects/AWDwR3/data/images/logo.png?1324774743"
 				alt="Amazon logo"> </a>
-				<div  ng-show="<%=!user.name%>">
+				<span  ng-show="<%=!user.name%>">
 				 Already an TheBookShelf customer?
 				 <a href="" style="color: white" ng-click=login()><u>Sign in</u></a>
+				 </span>
 				 </div>
 				 </div>
-				 </div>
-		<div class="dropdown col-sm-2" ng-module="CustomerApp" ng-controller="CustomerController" ng-show="<%=JSON.stringify(user.name)%>">
+		<div class="dropdown col-sm-1" ng-module="CustomerApp" ng-controller="CustomerController" ng-show="<%=JSON.stringify(user.name)%>">
   <button class="btn dropdown-toggle btn-success" type="button" data-toggle="dropdown"><%=user.name%>
   <span class="caret"></span></button>
   <ul class="dropdown-menu">
     <li><a href="" ng-click=viewProfile()>My Profile</a></li>
     <li><a href="" ng-click="viewOrderHistory()">View Order History</a></li>
     <li><a href="" ng-click="LogOut()">Log Out</a></li>
-    
+	           
+     
   </ul>
   </div>
-		
+  <button type="button" class="btn btn-success" ng-click="go_to_cart()" ng-module="CustomerApp" ng-controller="CustomerController" ng-show="<%=JSON.stringify(user.name)%>">
+  <li class="nav-item"><a class="nav-link" href="#" 
+               style="color: white"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+  </button>
+	
 </div>	
 		
 	</nav>

@@ -6,6 +6,12 @@ $scope.homepage = function(){
 //	alert("aaya");
 	window.location="/";
 }
+
+$scope.go_to_cart = function(){
+	alert("aaya");
+	window.location="/viewcart";
+}
+
 $scope.viewProfile=function(){
 		console.log("In viewProfile controller");
 		$window.location="/viewProfile";
