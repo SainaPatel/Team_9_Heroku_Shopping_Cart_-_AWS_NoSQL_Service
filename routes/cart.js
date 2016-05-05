@@ -142,7 +142,8 @@ exports.removeFromCart=function(req,res)
 exports.checkout=function(req,res)
 {
 	console.log("inside checkout" +req.body.customer_id);
-	var _id=req.body.customer_id;
+	//var _id=req.body.customer_id;
+	var _id="C_001";
 	var user=nano.use('test');
 	user.get(_id, function(err,body){
 		if(err)
@@ -173,15 +174,24 @@ exports.confirm=function(req,res)
 		order.insert({'customer_id' : customer_id , 'items':items, 'date':date, 'amount':amount },'',function(err,body,header){
 			if (err) {
 				console.log('[order.insert] ', err.message);
-			//	res.render("viewCart");
+				res.send({"msg": "Error Processing your order, please try again"});s
 			}else
 				{
-				res.send({"msg": "Congratulations!! Your order has been Placed Successfully. It should reach you within 2 weeks"});
-				console.log("you have inserted the record");
-				console.log(body);
+				console.log("Inserted")
 				}
 		});
-		//remove from cart and reduce inventory
+		
+		cart.destroy(req.body.product_details[i].value._id,req.body.product_details[i].value._rev,function(err,body,header){
+			if (!err) {
+				console.log("you have deleted the record");
+				console.log(body);
+			  }else{
+				  console.log('Error',err);
+				  res.send({"msg": "Error Processing your order, please try again"});
+			  }
+		});
+		//remove reduce inventory
 	}
 	
+	res.send({"msg": "Congratulations!! Your order has been Placed Successfully. It should reach you within 2 weeks"});
 };
