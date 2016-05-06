@@ -106,7 +106,7 @@ exports.editProfile = function(req,res){
 
 exports.renderOrderPage = function(req,res){
 	console.log("renderOrderPage Called");
-	res.render("orderHistory",{'rows':""});
+	res.render("orderHistory",{'rows':"","user":req.session});
 };
 
 exports.getOrderDetails = function(req,res){
