@@ -28,9 +28,11 @@ app.controller('CustomerController', function($scope,$http,$location,$window) {
 						"expire_date":$scope.expire_date
 					}
 				}).success(function(data) {
+					console.log("status"+data.status);
 					if(data.status=="Success")
 						{
-						window.location('/login');
+						
+						window.location="/login";
 						}
 		})
 	}

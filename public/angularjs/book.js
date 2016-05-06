@@ -31,7 +31,7 @@ search_book.controller('search_book', function($scope, $http,$window) {
 	};
 	$scope.addToCart=function(row,quantity){
 		
-		console.log("quantity"+$scope.quantity);
+		console.log("quantity"+quantity.quantity);
 		
 		$http({
 			method : "POST",

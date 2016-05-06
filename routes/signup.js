@@ -18,7 +18,7 @@ exports.signup=function(req,res)
 	
 	var test=nano.db.use('test');
 	
-	test.insert({'first_name':firstname,'last_name':lastname,'email':email,'password':password,'address':address,'card_no':card_no,'cvv':cvv,'expire_date':expiredate,'customer_id':customerid},'S-002',function(err,body,header){
+	test.insert({'first_name':firstname,'last_name':lastname,'email':email,'password':password,'address':address,'card_no':card_no,'cvv':cvv,'expire_date':expiredate},'',function(err,body,header){
 		if (err) {
 			console.log('[test.insert] ', err.message);
 			res.send({"status":"error"});

@@ -86,5 +86,5 @@ exports.logout = function(req,res)
 exports.login = function(req,res)
 {
 	console.log("Render login page");
-	res.render('login',{'msg':""});
+	res.render("login",{'msg':""});
 };
