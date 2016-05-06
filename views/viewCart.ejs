@@ -249,9 +249,9 @@
 						<br>
 						
 						<br>
-						<input type="number" ng-model="user.value.quantity" id="user.value._rev"
+						<input type="number" ng-model="quantity" value="{{user.value.quantity}}" id="{{user.value._rev}}"
 							
-							ng-click="changeQuantity(user.value.quantity)"></input></td>
+							ng-click="changeQuantity(user.value)" ></input></td>
 						<td><br>
 						<br>
 						<button ng-click="removeFromCart(user.value)">Remove</button>
