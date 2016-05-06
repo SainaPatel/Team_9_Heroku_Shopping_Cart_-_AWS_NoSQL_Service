@@ -24,12 +24,13 @@ exports.viewCart = function(req, res) {
 			//console.log("rows"+body.rows[0].values.customer_id);
 	    	if(typeof body.rows[0] !== "undefined")
 	        {
-	    		console.log("cart values "+body.rows[0].value.quantity);
+	    		console.log("cart values "+body.rows[0].value._id);
 	    		//res.send({"book_name":body.rows[0].value.book_name,"book_author":body.rows[0].value.book_author,"book_cost":body.rows[0].value.book_cost});
-	       res.send({"product_details":body.rows});
+	       res.send({"product_details":body.rows, 'status':200});
 	        }else
 	        	{
 	        	console.log("cart is empty");
+	        	  res.send({"status":400});
 	        	}
 			}else
 				{
@@ -142,6 +143,7 @@ exports.removeFromCart=function(req,res)
 	cart.destroy(product_details._id,product_details._rev,function(err,body,header){
 		if (!err) {
 		    console.log("Successfully deleted doc");
+		    res.send({'status':200});
 		  }else{
 			  console.log('Error',err);
 		  }
