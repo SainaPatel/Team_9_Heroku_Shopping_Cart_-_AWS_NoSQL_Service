@@ -21,6 +21,7 @@ search_book.controller('search_book', function($scope, $http,$window) {
 			}
 			else{
 				$scope.rows=[];
+				alert('Added to cart');
 			}
 			
 		}).error(function(error) {
