@@ -81,6 +81,7 @@ app.get('/getProfileDetails',customer.getProfileDetails);
 app.get('/getOrderDetails',customer.getOrderDetails);
 app.get('/home_search_book',book.home_search_book);
 app.get('/viewCart',cart.viewCart);
+app.get('/goToCart',cart.goToCart);
 app.get('/login', login.login);
 app.get('/logout', login.logout);
 

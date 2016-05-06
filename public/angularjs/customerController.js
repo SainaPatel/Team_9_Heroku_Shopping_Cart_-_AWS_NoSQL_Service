@@ -18,7 +18,7 @@ $scope.login = function(){
 
 $scope.go_to_cart = function(){
 	alert("aaya");
-	window.location="/viewcart";
+	window.location="/goToCart";
 }
 
 $scope.viewProfile=function(){

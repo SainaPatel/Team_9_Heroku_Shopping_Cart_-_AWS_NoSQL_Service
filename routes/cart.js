@@ -8,8 +8,11 @@ var http = require ('http');
 var nano=require('nano')('http://Team-9-Load-Balancer-423702890.us-east-1.elb.amazonaws.com:5984/');
 //var nano = require('nano')('http://team-9-load-balancer-423702890.us-east-1.elb.amazonaws.com:5984/');
 
+exports.goToCart=function(req,res){
+	res.render('viewCart');
+};
 exports.viewCart = function(req, res) {
-	var customerid="343";
+	var customerid=req.session.customer_id;
 		//req.param("customer_id");
 	
 	var cart=nano.use('cart');
@@ -78,7 +81,7 @@ exports.addToCart=function(req,res)
 	
 	if(req.session.email){
 		//customerid=req.param("customer_id");
-		var customerid="343";
+		var customerid=req.session.customer_id;
 		var cart=nano.use('cart');
 		var productdetails="product_details";
 		var bookimage=req.param("book_image");
@@ -150,8 +153,8 @@ exports.removeFromCart=function(req,res)
 exports.checkout=function(req,res)
 {
 	console.log("inside checkout" +req.body.customer_id);
-	//var _id=req.body.customer_id;
-	var _id="C_001";
+	var _id=req.body.customer_id;
+//	var _id="C_001";
 	var total = 0;
 	for (var i = 0; i < req.body.product_details.length; i++) {
 		var a=req.body.product_details[i].value.book_cost;
