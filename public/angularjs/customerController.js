@@ -6,6 +6,15 @@ $scope.homepage = function(){
 //	alert("aaya");
 	window.location="/";
 }
+$scope.go_to_signup = function(){
+//	alert("signup");
+	window.location="/go_to_signup";
+}
+
+$scope.login = function(){
+//	alert("signup");
+	window.location="/login";
+}
 
 $scope.go_to_cart = function(){
 	alert("aaya");
