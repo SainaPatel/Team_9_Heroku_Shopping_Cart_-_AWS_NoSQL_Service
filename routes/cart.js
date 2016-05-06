@@ -152,6 +152,14 @@ exports.checkout=function(req,res)
 	console.log("inside checkout" +req.body.customer_id);
 	//var _id=req.body.customer_id;
 	var _id="C_001";
+	var total = 0;
+	for (var i = 0; i < req.body.product_details.length; i++) {
+		var a=req.body.product_details[i].value.book_cost;
+		var b=req.body.product_details[i].value.quantity;
+		console.log( a +" " +b);
+		total = total+(a*b);
+	}
+	console.log("Total:" +total);
 	var user=nano.use('test');
 	user.get(_id, function(err,body){
 		if(err)
@@ -162,30 +170,33 @@ exports.checkout=function(req,res)
 		else
 			{
 			console.log("Customer details:" +body);
-			res.send({"credit_card_details": body});
+			res.send({"credit_card_details": body,"total":total});
 			}
 });
 };
 
 exports.confirm=function(req,res)
 {
-	console.log("inside confirm" +req.body.product_details);
+	//insert individual totals for each product
+	console.log("inside confirm" +req.body.product_details + "Total:" +req.body.total);
 	var date=new Date();
 	console.log(date);
 	var order=nano.use('order');
 	var cart=nano.use('cart');
 	for (var i = 0; i < req.body.product_details.length; i++) {
-		console.log("Product " +i+ ": "+JSON.stringify(req.body.product_details[i].value.customer_id));
 		var customer_id=JSON.stringify(req.body.product_details[i].value.customer_id);
 		var items=JSON.stringify(req.body.product_details[i].value.book_name);
-		var amount=JSON.stringify(req.body.product_details[i].value.book_cost);
+		var a=req.body.product_details[i].value.book_cost;
+		var b=req.body.product_details[i].value.quantity;
+		var amount=a*b;
+		console.log("Product cost"+a+" "+b+" "+amount);
 		order.insert({'customer_id' : customer_id , 'items':items, 'date':date, 'amount':amount },'',function(err,body,header){
 			if (err) {
 				console.log('[order.insert] ', err.message);
-				res.send({"msg": "Error Processing your order, please try again"});s
+				res.send({"msg": "Error Processing your order, please try again"});
 			}else
 				{
-				console.log("Inserted")
+				console.log("Inserted");
 				}
 		});
 		

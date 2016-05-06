@@ -75,6 +75,7 @@
 		}
 		
 		$scope.checkout = function(product_details){
+	console.log("Length:" +product_details.length);
 	console.log("Checkout: "+JSON.stringify(product_details[0].value.customer_id));
 	$scope.customer_id=	JSON.stringify(product_details[0].value.customer_id);
 	console.log("Customer ID:" +$scope.customer_id);
@@ -82,13 +83,15 @@
 				method : "POST",
 				url : '/checkout',
 				data : {
-					"customer_id" : $scope.customer_id
+					"customer_id" : $scope.customer_id,
+					"product_details":product_details
 				}
 			}).success(function(data){
 				$scope.proceed=false;
 				$scope.place=true;
 				$scope.customer=data.credit_card_details;
-				console.log("checkout success" +JSON.stringify($scope.customer.email) );
+				$scope.total=data.total;
+				console.log("checkout success" +$scope.total );
 			})
 			
 		}
@@ -101,7 +104,8 @@
 						method : "POST",
 						url : '/confirm',
 						data : {
-							"product_details" : product_details
+							"product_details" : product_details,
+							"total": $scope.total
 						}
 					}).success(function(data){
 						$scope.proceed=false;
@@ -222,6 +226,9 @@
 
 		</div>
 		<div class="col-sm-2"></div>
+	</div>
+	<div ng-show="place">
+	Total Amount:{{total}}
 	</div>
 <br><br>
 	<div class=" row">
