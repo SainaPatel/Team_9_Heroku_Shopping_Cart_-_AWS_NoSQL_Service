@@ -21,10 +21,11 @@ exports.signup=function(req,res)
 	test.insert({'first_name':firstname,'last_name':lastname,'email':email,'password':password,'address':address,'card_no':card_no,'cvv':cvv,'expire_date':expiredate,'customer_id':customerid},'S-002',function(err,body,header){
 		if (err) {
 			console.log('[test.insert] ', err.message);
-			res.render("login");
+			res.send({"status":"error"});
 		}
 		console.log('you have inserted the Record.');
 		console.log(body);
+		res.send({"status":"Success"});
 	});
 
 	

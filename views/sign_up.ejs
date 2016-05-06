@@ -25,20 +25,21 @@
 		<div class="row">
 			<div class="col-sm-1"></div>
 			<div class="col-sm-10" style="text-align:left">
-				<div class="panel-body" id="panel">
-					<form method="POST" action="/signup">
+				<div class="panel-body" id="panel" ng-module="CustomerApp"
+		ng-controller="CustomerController" >
+					<form>
 						<h3>Create New Account</h3>
 						<br/>
-						<input type="text" placeholder="First Name" name="firstname" size="30" style="padding:5px"><br/><br/>
-						<input type="text" placeholder="Last Name" name="lastname" size="30" style="padding:5px"><br/><br/>
-						<input type="email" placeholder="E-mail Address" name="email" size="30" style="padding:5px"><br/><br/>
-						<input type="password" placeholder="Password" name="pass" size="30" style="padding:5px"><br/><br/>
-						<input type="password" placeholder="Verify Password" name="password" size="30" style="padding:5px"><br/></br>
-						<input type="text" placeholder="Address" name="address" size="30" style="padding:5px"><br/></br>
-						<input type="text" placeholder="Card Number" name="card_no" size="30" style="padding:5px"><br/></br>
-						<input type="number" placeholder="CVV" name="cvv" size="30" style="padding:5px"><br/></br>
-						<input type="Date" placeholder="Expiry Date" name="expire_date" size="30" style="padding:5px"><br/></br>
-						<button type="submit" class="btn" style="color:white; background-color:#808080">Continue</button>
+						<input type="text" placeholder="First Name" ng-model="firstname" name="firstname" size="30" style="padding:5px"><br/><br/>
+						<input type="text" placeholder="Last Name" ng-model="lastname" name="lastname" size="30" style="padding:5px"><br/><br/>
+						<input type="email" placeholder="E-mail Address" ng-model="email" name="email" size="30" style="padding:5px"><br/><br/>
+						<input type="password" placeholder="Password" ng-model="pass" name="pass" size="30" style="padding:5px"><br/><br/>
+						<input type="password" placeholder="Verify Password" ng-model="password" name="password" size="30" style="padding:5px"><br/></br>
+						<input type="text" placeholder="Address" ng-model="address" name="address" size="30" style="padding:5px"><br/></br>
+						<input type="text" placeholder="Card Number" ng-model="card_no" name="card_no" size="30" style="padding:5px"><br/></br>
+						<input type="number" placeholder="CVV" ng-model="cvv" name="cvv" size="30" style="padding:5px"><br/></br>
+						<input type="Date" placeholder="Expiry Date" ng-model="expire_date" name="expire_date" size="30" style="padding:5px"><br/></br>
+						<button type="submit" class="btn" style="color:white; background-color:#808080" ng-click="signup();" >Continue</button>
 					</form>
 				</div>
 			</div>

@@ -89,6 +89,7 @@ exports.addToCart=function(req,res)
 		var bookauthor=req.param("book_author");
 		var bookcost=req.param("book_cost");
 		var quantity=req.param("quantity");
+		console.log("quanity"+quantity);
 		var counter=1;
 		var id=counter++;
 		

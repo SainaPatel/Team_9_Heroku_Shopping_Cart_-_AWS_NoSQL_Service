@@ -5,6 +5,7 @@ search_book.controller('search_book', function($scope, $http,$window) {
 	console.log("In search_book controller");
 	$scope.searchBy="";
 	$scope.searchValue="";
+	$scope.quantity=1;
 	$scope.rows=[];
 	console.log("inside");
 	$scope.unexpected_error = true;
@@ -28,9 +29,9 @@ search_book.controller('search_book', function($scope, $http,$window) {
 			$scope.rows=[];
 		});
 	};
-	$scope.addToCart=function(row){
+	$scope.addToCart=function(row,quantity){
 		
-		
+		console.log("quantity"+$scope.quantity);
 		
 		$http({
 			method : "POST",
@@ -40,7 +41,7 @@ search_book.controller('search_book', function($scope, $http,$window) {
 				"book_name" : row.doc.book_name,
 				"book_author" : row.doc.book_author,
 				"book_cost" : row.doc.book_price,
-				"quantity" : $scope.quantity
+				"quantity" : quantity
 				
 			}
 		}).success(function(data){

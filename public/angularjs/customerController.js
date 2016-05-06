@@ -2,6 +2,40 @@ var app = angular.module('CustomerApp', []);
 app.controller('CustomerController', function($scope,$http,$location,$window) {
 	console.log("In Customer Controller");
 
+	$scope.signup=function(){
+//		var firstname=req.param("firstname");
+//		var lastname=req.param("lastname");
+//		var email=req.param("email");
+//		var username=req.param("username");
+//		var password=req.param("password");
+//		var address=req.param("address");
+//		var card_no=req.param("card_no");
+//		var cvv=req.param("cvv");
+//		var expiredate=req.param("expire_date");
+		console.log("firstname"+$scope.firstname);
+		$http(
+				{
+					method : "POST",
+					url : '/signup',
+					data : {
+						"firstname" : $scope.firstname,
+						"lastname" : $scope.lastname,
+						"email" : $scope.email,
+						"password" : $scope.password,
+						"address" : $scope.address,
+						"card_no" : $scope.card_no,
+						"cvv" : $scope.cvv,
+						"expire_date":$scope.expire_date
+					}
+				}).success(function(data) {
+					if(data.status=="Success")
+						{
+						window.location('/login');
+						}
+		})
+	}
+	
+	
 $scope.homepage = function(){
 //	alert("aaya");
 	window.location="/";
