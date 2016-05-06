@@ -21,20 +21,26 @@
          <div class="col-sm-10">
             <div class="container-fluid" style="color:white" ng-module="CustomerApp"
 		ng-controller="CustomerController">  <a href="" ng-click="homepage();"><img src="http://intertwingly.net/projects/AWDwR3/data/images/logo.png?1324774743" alt="Amazon logo"> </a>
-          <div ng-show="<%=!user%>">
+          <span ng-show="<%=!user.name%>">
             Already an TheBookShelf customer? <a href="#" style="color:white"><u>Sign in</u></a>
-            </div></div>
+            </span></div>
          </div>
          
-   <div class="dropdown col-sm-2" ng-module="CustomerApp"
-		ng-controller="CustomerController" ng-show="<%=user%>">
-  <button class="btn dropdown-toggle btn-success" type="button" data-toggle="dropdown">My Account
+   <div class="dropdown col-sm-1" ng-module="CustomerApp"
+		ng-controller="CustomerController" ng-show="<%=JSON.stringify(user.name)%>">
+  <button class="btn dropdown-toggle btn-success" type="button" data-toggle="dropdown"><%=user.name%>
   <span class="caret"></span></button>
   <ul class="dropdown-menu">
     <li><a href="" ng-click=viewProfile()>My Profile</a></li>
     <li><a href="" ng-click="viewOrderHistory()">View Order History</a></li>
-  </ul>
-</div>	
+  <li><a href="" ng-click="LogOut()">Log Out</a></li>
+	</ul>
+</div>		
+<button type="button" class="btn btn-success" ng-click="go_to_cart()" ng-module="CustomerApp" ng-controller="CustomerController"  ng-show="<%=JSON.stringify(user.name)%>">
+  <li class="nav-item"><a class="nav-link" href="#" 
+               style="color: white"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+  </button>
+	
 </div>
       </nav>
        <div ng-module="search_book" ng-controller="search_book">
@@ -65,10 +71,14 @@
                   </div>
                   <div class="col-sm-3"></div>
                </div>
-               <div class="row">
+               <div align ="center" ng-repeat="row in rows | limitTo : 1">
+               <h2>Category:{{row.doc.book_category}}</h2>
+               </div>
+                              <div class="row">
                <div class="col-sm-2">
                </div>
-                  <div class="col-md-4" style="margin: 10px;">
+               <div class="col-md-4" style="margin: 10px;">
+                 
                      <table class="table" style="background-color:#E5F4F9;">
                         <tr ng-repeat="row in rows" ng-if="$even">
                            <td><img height="150px" width="100px" alt=""

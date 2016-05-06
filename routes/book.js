@@ -163,7 +163,7 @@ exports.home_search_book = function(req,res)
 		    			
 		    			console.log(rows[0]);
 		    		console.log("Logged in?: "+req.session.email);
-		    		res.render('search_book',{'rows':rows,'user':req.session.email});
+		    		res.render('search_book',{'rows':rows,'user':req.session});
 		        }
 		    	else{
 		    		console.log("No rows returned");
