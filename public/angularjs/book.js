@@ -1,7 +1,7 @@
 //loading the 'login' angularJS module
 var search_book = angular.module('search_book', []);
 //defining the login controller
-search_book.controller('search_book', function($scope, $http) {
+search_book.controller('search_book', function($scope, $http,$window) {
 	console.log("In search_book controller");
 	$scope.searchBy="";
 	$scope.searchValue="";
@@ -29,6 +29,8 @@ search_book.controller('search_book', function($scope, $http) {
 	};
 	$scope.addToCart=function(row){
 		
+		
+		
 		$http({
 			method : "POST",
 			url :'/addToCart',
@@ -37,11 +39,16 @@ search_book.controller('search_book', function($scope, $http) {
 				"book_name" : row.doc.book_name,
 				"book_author" : row.doc.book_author,
 				"book_cost" : row.doc.book_price,
-				"quantity" : "1",
+				"quantity" : $scope.quantity
 				
 			}
 		}).success(function(data){
-			console.log(data.msg);
+			if(data.status==400){
+				$window.location="/login";
+			}
+			else{
+				console.log(data.msg);
+			}
 		});
 		
 	};

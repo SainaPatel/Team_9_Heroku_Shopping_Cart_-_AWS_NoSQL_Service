@@ -74,30 +74,38 @@ exports.viewCart = function(req, res) {
 
 exports.addToCart=function(req,res)
 {
-	//customerid=req.param("customer_id");
-	var customerid="343";
-	var cart=nano.use('cart');
-	var productdetails="product_details";
-	var bookimage=req.param("book_image");
-	var bookname=req.param("book_name");
-	var bookauthor=req.param("book_author");
-	var bookcost=req.param("book_cost");
-	var quantity=req.param("quantity");
-	var counter=1;
-	var id=counter++;
+	console.log(req.session.email);
 	
-	cart.insert({'customer_id' : customerid , 'book_image':bookimage, 'book_name':bookname, 'book_author':bookauthor, 'book_cost':bookcost, 'quantity':quantity},id,function(err,body,header){
-		if (err) {
-			console.log('[cart.insert] ', err.message);
-			res.send({"msg" : err.message});
-		}else
-			{
-			console.log("you have inserted the record");
-			console.log(body);
-			res.send({"msg":"Added to Cart Successfully"});
-			}
-	});
-	
+	if(req.session.email){
+		//customerid=req.param("customer_id");
+		var customerid="343";
+		var cart=nano.use('cart');
+		var productdetails="product_details";
+		var bookimage=req.param("book_image");
+		var bookname=req.param("book_name");
+		var bookauthor=req.param("book_author");
+		var bookcost=req.param("book_cost");
+		var quantity=req.param("quantity");
+		var counter=1;
+		var id=counter++;
+		
+		cart.insert({'customer_id' : customerid , 'book_image':bookimage, 'book_name':bookname, 'book_author':bookauthor, 'book_cost':bookcost, 'quantity':quantity},id,function(err,body,header){
+			if (err) {
+				console.log('[cart.insert] ', err.message);
+				res.send({"msg" : err.message});
+			}else
+				{
+				console.log("you have inserted the record");
+				console.log(body);
+				res.send({'status':200,"msg":"Added to Cart Successfully"});
+				}
+		});
+		
+	}
+	else{
+		console.log("inside not logged in");
+		res.send({'status':400,'msg':'Not logged In'});
+	}
 	
 	
 	
