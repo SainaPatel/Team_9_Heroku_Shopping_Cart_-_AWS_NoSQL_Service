@@ -9,7 +9,7 @@ var nano=require('nano')('http://Team-9-Load-Balancer-423702890.us-east-1.elb.am
 //var nano = require('nano')('http://team-9-load-balancer-423702890.us-east-1.elb.amazonaws.com:5984/');
 
 exports.goToCart=function(req,res){
-	res.render('viewCart');
+	res.render('viewCart',{'user':req.session});
 };
 exports.viewCart = function(req, res) {
 	var customerid=req.session.customer_id;

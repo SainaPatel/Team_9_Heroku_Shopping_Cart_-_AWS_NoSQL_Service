@@ -53,7 +53,7 @@ $scope.login = function(){
 }
 
 $scope.go_to_cart = function(){
-	alert("aaya");
+	
 	window.location="/goToCart";
 }
 

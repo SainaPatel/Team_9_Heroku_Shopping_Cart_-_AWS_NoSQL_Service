@@ -140,7 +140,7 @@
 						href="#" style="color: white"><u>Sign in</u></a>
 				</div>
 			</div>
-			<div class="col-sm-1" style="color: white">Dhiraj Gurnani</div>
+			<div class="col-sm-1" style="color: white"><%=user.name%></div>
 		</div>
 	</nav>
 
@@ -213,8 +213,8 @@
 						<br>{{user.value.book_cost}} $</td>
 						<td><br>
 						<br>
-						<input type="number" ng-model="quantity" id="{{user.value._rev}}"
-							value={{user.value.quantity}}
+						<input type="number" ng-model="quantity" id="user.value._rev"
+							value=user.value.quantity
 							ng-click="changeQuantity(user.value)"></input></td>
 						<td><br>
 						<br>
