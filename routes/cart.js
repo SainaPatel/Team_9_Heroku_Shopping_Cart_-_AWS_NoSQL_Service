@@ -190,8 +190,8 @@ exports.confirm=function(req,res)
 	var order=nano.use('order');
 	var cart=nano.use('cart');
 	for (var i = 0; i < req.body.product_details.length; i++) {
-		var customer_id=JSON.stringify(req.body.product_details[i].value.customer_id);
-		var items=JSON.stringify(req.body.product_details[i].value.book_name);
+		var customer_id=req.body.product_details[i].value.customer_id;
+		var items=req.body.product_details[i].value.book_name;
 		var a=req.body.product_details[i].value.book_cost;
 		var b=req.body.product_details[i].value.quantity;
 		var amount=a*b;
@@ -202,7 +202,7 @@ exports.confirm=function(req,res)
 				res.send({"msg": "Error Processing your order, please try again"});
 			}else
 				{
-				console.log("Inserted");
+				console.log("Inserted" +JSON.stringify(body));
 				}
 		});
 		
