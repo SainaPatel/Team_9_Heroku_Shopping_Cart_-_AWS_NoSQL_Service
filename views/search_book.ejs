@@ -98,6 +98,7 @@
 					</div>
 					<div class="col-sm-3"></div>
 				</div>
+<<<<<<< HEAD
 				<div  ng-show="no_rows_returned" class="alert alert-info" style="margin-left:200px;margin-right:200px;margin-top:20px;"><strong>{{no_rows_returned}}</strong></div>
 				<div class="row" style="margin: 10px; font-size: 20px">
 					<div class="col-sm-1"></div>
@@ -108,6 +109,19 @@
 							<%=searchValue%></div>
 					</div>
 					
+=======
+				<div align="center" ng-repeat="row in rows | limitTo : 1">
+					<h2>Category:{{row.doc.book_category}}</h2>
+					<div class="row">
+						<div class="col-sm-4"></div>
+						<div class="col-sm-4">
+							<div ng-show="msg" class="alert alert-success">
+								<strong>Success!</strong><br> {{msg}}
+							</div>
+						</div>
+						<div class="col-sm-4"></div>
+					</div>
+>>>>>>> origin/master
 				</div>
 				
 				<div class="row">

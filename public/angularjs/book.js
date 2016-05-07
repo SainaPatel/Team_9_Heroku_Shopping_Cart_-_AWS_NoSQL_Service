@@ -50,6 +50,7 @@ search_book.controller('search_book', function($scope, $http,$window) {
 				"book_name" : row.doc.book_name,
 				"book_author" : row.doc.book_author,
 				"book_cost" : row.doc.book_price,
+				"book_isbn" : row.doc.book_isbn,
 				"quantity" : quantity
 				
 			}
