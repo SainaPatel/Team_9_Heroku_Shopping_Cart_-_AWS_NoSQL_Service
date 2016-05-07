@@ -9,8 +9,10 @@ search_book.controller('search_book', function($scope, $http,$window) {
 	$scope.rows=[];
 	console.log("inside");
 	$scope.unexpected_error = true;
+	
 	$scope.submit = function() {
 		console.log("inside");
+		//alert($scope.searchValue);
 		$http({
 			method : "GET",
 			url : '/search_book/'+$scope.searchBy+'/'+$scope.searchValue,
@@ -18,8 +20,14 @@ search_book.controller('search_book', function($scope, $http,$window) {
 		}).success(function(data) {
 			if(data.status_code==200){
 				$scope.rows=data.rows;
+<<<<<<< HEAD
 				$scope.no_rows_returned=undefined;
+=======
+				$scope.sea = $scope.searchValue;
+				$scope.searchby = $scope.searchBy;
+>>>>>>> origin/master
 				console.log(data.rows[0]);
+				
 			}
 			else{
 				$scope.rows=[];

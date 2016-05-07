@@ -8,7 +8,7 @@ nano.db.create('test', function() {
     // specify the database we are going to use
     var test = nano.use('test');
     // and insert a document in it
-    test.insert({ email: "ritika@gmail.com",password:"ritika" }, 'C_002', function(err, body, header) {
+    test.insert({ email: "ritika@gmail.com",password:"ritika" }, '', function(err, body, header) {
       if (err) {
         console.log('[test.insert] ', err.message);
         return;
@@ -62,7 +62,7 @@ test.insert(
 nano.db.create('cart',function(){
 	 	var cart=nano.use('cart');
 	 	
-	 	cart.insert({customer_id:"123",product_details:"product details"},'C_001',function(err, body, header) {
+	 	cart.insert({customer_id:"123",product_details:"product details"},'',function(err, body, header) {
 	 		if (err) {
 	 			console.log('[cart.insert] ', err.message);
 	 			return;
