@@ -140,12 +140,14 @@ $scope.getOrderDetails=function(req,res){
 			
 		}).success(function(data) {
 			if(data.status==200)
-			{console.log("in success getOrderDetails Controller: "+JSON.stringify(data));			
+			{
+			console.log("in success getOrderDetails Controller: "+JSON.stringify(data));			
 			console.log("Data.result" +data.result[0].value);
 			$scope.orders=data.result;
 			}
 			else
 				{
+				console.log("out");
 				$scope.message=data.message;
 				}
 						

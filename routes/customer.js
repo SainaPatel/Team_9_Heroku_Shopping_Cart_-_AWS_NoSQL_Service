@@ -122,11 +122,8 @@ exports.getOrderDetails = function(req,res){
 		    	if(typeof body.rows[0] !== "undefined")
 		        {
 		    		console.log("JS output: " +body.rows);
-		    		
-		    			res.status(200).json({
-		    				message : "success",
-		    				result:	body.rows
-		    			});
+		    		res.send({"status":200,"message":"","result":body.rows});
+		    			
 		        }
 		    	else
 		    		{

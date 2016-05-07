@@ -12,7 +12,7 @@ exports.goToCart=function(req,res){
 	res.render('viewCart',{'user':req.session});
 };
 exports.viewCart = function(req, res) {
-	var customerid=req.session._id;
+	var customerid=req.session.customer_id;
 	//req.param("customer_id");
 
 	var cart=nano.use('cart');
