@@ -244,7 +244,7 @@ exports.confirm=function(req,res)
 		var bookisbn=req.body.product_details[i].value.book_isbn;
 		var amount=a*b;
 		console.log("Product cost"+a+" "+b+" "+amount);
-		order.insert({'customer_id' : customer_id , 'items':items, 'date':date, 'amount':amount },'',function(err,body,header){
+		order.insert({'customer_id' : customer_id , 'items':items, 'date':date, 'amount':amount, 'quantity':b },'',function(err,body,header){
 			if (err) {
 				console.log('[order.insert] ', err.message);
 				res.send({"msg": "Error Processing your order, please try again"});

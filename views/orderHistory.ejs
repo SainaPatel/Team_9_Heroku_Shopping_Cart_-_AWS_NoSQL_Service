@@ -176,14 +176,16 @@
 									<th>Order ID</th>
 									<th>Date</th>
 									<th>Items</th>
+									<th>Quantity</th>
 									<th>Amount</th>
 								</tr>
 							</thead>
 							<tbody>
 								<tr ng-repeat="order in orders" align="left">
 									<td>{{order.value._id}}</td>
-									<td>{{order.value.date}}</td>
+									<td>{{order.value.date | date : "fullDate"}}</td>
 									<td>{{order.value.items}}</td>
+									<td>{{order.value.quantity}}</td>
 									<td>{{order.value.amount}}</td>
 								</tr>
 							</tbody>
