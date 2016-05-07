@@ -65,7 +65,7 @@ search_book.controller('search_book', function($scope, $http,$window) {
 	};
 	
 	$scope.initialize=function(rows){
-		if(rows=="{}"){
+		if(rows==""){
 			$scope.no_rows_returned="Your search did not match any books in our records";
 		}else{
 			$scope.rows=rows;
