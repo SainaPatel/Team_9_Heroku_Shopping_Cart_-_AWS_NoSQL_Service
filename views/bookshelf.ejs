@@ -38,6 +38,11 @@
 				<span  ng-show="<%=!user.name%>">
 				 Already an TheBookShelf customer?
 				 <a href="" style="color: white" ng-click=login()><u>Sign in</u></a>
+				 </a> <span
+						ng-show="<%=!user.name%>"> New to TheBookShelf
+						 <a href="#" style="color: white" ng-click="go_to_signup();"><u>Sign
+								Up</u></a>
+					</span>
 				 </span>
 				 </div>
 				 </div>

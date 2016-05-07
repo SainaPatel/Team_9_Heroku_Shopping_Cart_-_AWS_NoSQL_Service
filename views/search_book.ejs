@@ -33,7 +33,7 @@
 	<nav class="navbar navbar-default navbar-fixed-top"
 		style="background-color: #484848; padding: 10px">
 		<div class="row">
-			<div class="col-sm-10">
+			<div class="col-sm-5">
 				<div class="container-fluid" style="color: white"
 					ng-module="CustomerApp" ng-controller="CustomerController">
 					<a href="" ng-click="homepage();"><img
@@ -41,6 +41,10 @@
 						ng-show="<%=!user.name%>"> Already an TheBookShelf
 						customer? <a href="#" style="color: white" ng-click="login();"><u>Sign
 								in</u></a>
+								</a> <span
+						ng-show="<%=!user.name%>"> New to TheBookShelf
+						 <a href="#" style="color: white" ng-click="go_to_signup();"><u>Sign
+								Up</u></a>
 					</span>
 				</div>
 			</div>
