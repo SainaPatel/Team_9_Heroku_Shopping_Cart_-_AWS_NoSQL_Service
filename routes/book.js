@@ -113,12 +113,14 @@ exports.search_book = function(req,res)
 		        }
 		    	else{
 		    		console.log("No rows returned");
+		    		res.send({"status_code":400});
 		    	}
 		    	
 		    }
 		    else
 		    	{
 		    	console.log("Error "+err);
+		    	res.send(err);
 		    	
 		    	}
 		});
@@ -167,6 +169,7 @@ exports.home_search_book = function(req,res)
 		        }
 		    	else{
 		    		console.log("No rows returned");
+		    		res.render('search_book',{'rows':'{}','user':req.session});
 		    	}
 		    	
 		    }

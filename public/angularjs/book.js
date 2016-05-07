@@ -18,11 +18,12 @@ search_book.controller('search_book', function($scope, $http,$window) {
 		}).success(function(data) {
 			if(data.status_code==200){
 				$scope.rows=data.rows;
+				$scope.no_rows_returned=undefined;
 				console.log(data.rows[0]);
 			}
 			else{
 				$scope.rows=[];
-				alert('Added to cart');
+				$scope.no_rows_returned="Your search did not match any books in our records";
 			}
 			
 		}).error(function(error) {
@@ -52,6 +53,17 @@ search_book.controller('search_book', function($scope, $http,$window) {
 				console.log(data.msg);
 			}
 		});
+		
+	};
+	
+	$scope.initialize=function(rows){
+		if(rows=="{}"){
+			$scope.no_rows_returned="Your search did not match any books in our records";
+		}else{
+			$scope.rows=rows;
+		$scope.no_rows_returned=undefined;
+		}
+		
 		
 	};
 	
