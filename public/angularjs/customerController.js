@@ -31,7 +31,6 @@ app.controller('CustomerController', function($scope,$http,$location,$window) {
 					console.log("status"+data.status);
 					if(data.status=="Success")
 						{
-						
 						window.location="/login";
 						}
 		})
