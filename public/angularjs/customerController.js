@@ -1,7 +1,7 @@
 var app = angular.module('CustomerApp', []);
 app.controller('CustomerController', function($scope,$http,$location,$window) {
 	console.log("In Customer Controller");
-$scope.status=null;
+
 	$scope.signup=function(){
 //		var firstname=req.param("firstname");
 //		var lastname=req.param("lastname");
@@ -28,7 +28,6 @@ $scope.status=null;
 						"expire_date":$scope.expire_date
 					}
 				}).success(function(data) {
-					$scope.status=data.status;
 					console.log("status"+data.status);
 					if(data.status=="Success")
 						{
@@ -140,10 +139,15 @@ $scope.getOrderDetails=function(req,res){
 			url : '/getOrderDetails'
 			
 		}).success(function(data) {
-			
-			console.log("in success getOrderDetails Controller: "+JSON.stringify(data));			
+			if(data.status==200)
+			{console.log("in success getOrderDetails Controller: "+JSON.stringify(data));			
 			console.log("Data.result" +data.result[0].value);
 			$scope.orders=data.result;
+			}
+			else
+				{
+				$scope.message=data.message;
+				}
 						
 		}).error(function(error) {
 			$window.alert("Error" +JSON.stringify(error));
