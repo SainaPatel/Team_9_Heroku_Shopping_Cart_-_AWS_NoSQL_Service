@@ -85,7 +85,7 @@ $scope.getProfileDetails=function(){
 			$scope.phone_no=data.result.phone_no;
 			$scope.card_no=data.result.card_no;
 			$scope.cvv=data.result.cvv;
-			$scope.expiry=data.result.expiry;
+			$scope.expiry=data.result.expire_date;
 		}).error(function(error) {
 			$window.alert("Error: " +JSON.stringify(error));
 		});	

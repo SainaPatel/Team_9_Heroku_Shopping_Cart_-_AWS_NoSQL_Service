@@ -72,7 +72,7 @@ exports.editProfile = function(req,res){
 	    		
 	    		test.insert({"first_name":first_name,"last_name":last_name,"address":address,"zipcode":zipcode,
 	    			"email":email,"password":password,"phone_no":phone_no,"card_no":card_no,"cvv":cvv,
-	    			"expiry":expiry,_rev:rev},id, function(err, body, header) {
+	    			"expire_date":expiry,_rev:rev},id, function(err, body, header) {
 	    			      if (err) {
 	    			          console.log('[test.insert] ', err.message);
 	    			          return;
