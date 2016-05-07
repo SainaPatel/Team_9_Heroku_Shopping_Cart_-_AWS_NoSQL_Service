@@ -103,7 +103,9 @@
 				$scope.place=true;
 				$scope.customer=data.credit_card_details;
 				$scope.total=data.total;
-				console.log("checkout success" +$scope.total );
+				$scope.product_details=data.product_details;
+				console.log("product_details"+data.product_details);
+				console.log("checkout success" +$scope.product_details );
 			})
 			
 		}
@@ -182,7 +184,7 @@
 
 	<div class="row">
 		<div class="col-sm-1"></div>
-		<div class="col-sm-9">
+		<div class="col-sm-10">
 		<div ng-show="message" class="alert alert-success">
   <strong>Success!</strong><br> {{message}}
   
@@ -232,7 +234,9 @@
 						<th>Book Author</th>
 						<th>Book Name</th>
 						<th>Price</th>
+						<th> Status </th>
 						<th>Quantity</th>
+						
 					</tr>
 				</thead>
 				<tbody>
@@ -245,16 +249,17 @@
 						<br>{{user.value.book_name}}</td>
 						<td><br>
 						<br>{{user.value.book_cost}} $</td>
-						<td>
-						<br>
+						<td><br>
+						<br>{{user.value.status}} </td>
 						
-						<br>
+						
+						<td><br><br>
+						
 						<input type="number" ng-model="quantity" value="{{user.value.quantity}}" id="{{user.value._rev}}"
-							
-							ng-click="changeQuantity(user.value)" ></input></td>
+							ng-click="changeQuantity(user.value)" size="35" ></input></td>
 						<td><br>
 						<br>
-						<button ng-click="removeFromCart(user.value)">Remove</button>
+						<button ng-click="removeFromCart(user.value)">Remove</button></td>
 					</tr>
 				</tbody>
 			</table>
