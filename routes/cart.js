@@ -40,7 +40,7 @@ exports.viewCart = function(req, res) {
 							if(typeof bodybooks.rows[0] !== "undefined")
 							{
 								console.log(detail.value);
-								if(bodybooks.rows[0].value.book_count==0)
+								if(bodybooks.rows[0].value.book_count-detail.value.quantity<0)
 								{
 									detail.value.status="Out of Stock";
 								}else
