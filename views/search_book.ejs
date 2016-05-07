@@ -33,13 +33,14 @@
       <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
       <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+      <link rel='stylesheet' href='/stylesheets/style.css' />
       <!-- Loading the AngularJS file from /public/angularJS folder -->
       <script src="angularjs/book.js"></script>
       <script src="angularjs/customerController.js"></script>
       <script src="angularjs/angular.ng-modules.js"></script>
       <style>
          #panel {background-color:#f2f2f2; margin-top:100px; margin-bottom:75px; padding-left:40px; padding-bottom:70px}
-      
+      	 
       </style>
    </head>
    <body >
@@ -99,15 +100,19 @@
                   </div>
                   <div class="col-sm-3"></div>
                </div>
-               
-               
+                              
+             <div class="row" style="margin: 10px; font-size:20px">
+             <div class="col-sm-1">
+             </div>
+             <div class="col-sm-11" id="searchdisplay">  
+         <div ng-show="searchby">Search result for {{searchby}} by {{sea}}</div>
+               <div ng-show="!searchby">Search result for <%=searchBy%> by <%=searchValue%></div>
+               </div></div>
                               <div class="row">
                <div class="col-sm-1">
                </div>
                <div class="col-md-5" style="margin: 10px;">
-         <div ng-show="searchby">{{searchby}}:{{sea}}</div>
-               <div ng-show="!searchby"><%=searchBy%>:<%=searchValue%></div>
-                       
+                 
                      <table class="table" style="background-color:#E5F4F9;">
                         <tr ng-repeat="row in rows" ng-if="$even">
                            <td><img height="150px" width="100px" alt=""
