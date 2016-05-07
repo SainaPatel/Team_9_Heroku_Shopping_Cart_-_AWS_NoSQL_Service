@@ -1,7 +1,7 @@
 var app = angular.module('CustomerApp', []);
 app.controller('CustomerController', function($scope,$http,$location,$window) {
 	console.log("In Customer Controller");
-
+$scope.status=null;
 	$scope.signup=function(){
 //		var firstname=req.param("firstname");
 //		var lastname=req.param("lastname");
@@ -28,6 +28,7 @@ app.controller('CustomerController', function($scope,$http,$location,$window) {
 						"expire_date":$scope.expire_date
 					}
 				}).success(function(data) {
+					$scope.status=data.status;
 					console.log("status"+data.status);
 					if(data.status=="Success")
 						{
