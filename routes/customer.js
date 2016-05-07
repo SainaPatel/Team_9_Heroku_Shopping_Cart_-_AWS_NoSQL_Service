@@ -131,6 +131,7 @@ exports.getOrderDetails = function(req,res){
 		    	else
 		    		{
 		    		//send proper message if no orders present
+		    		res.send({"status":400,"message":"You haven't ordered anything from TheBookShelf yet"});
 		    		console.log("Login to continue");
 		    		}
 		    }
