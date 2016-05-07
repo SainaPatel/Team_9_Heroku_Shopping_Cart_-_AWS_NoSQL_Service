@@ -60,6 +60,7 @@ search_book.controller('search_book', function($scope, $http,$window) {
 			}
 			else{
 				console.log(data.msg);
+				$scope.msg=data.msg;
 			}
 		});
 		
