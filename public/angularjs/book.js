@@ -20,12 +20,12 @@ search_book.controller('search_book', function($scope, $http,$window) {
 		}).success(function(data) {
 			if(data.status_code==200){
 				$scope.rows=data.rows;
-<<<<<<< HEAD
+
 				$scope.no_rows_returned=undefined;
-=======
+
 				$scope.sea = $scope.searchValue;
 				$scope.searchby = $scope.searchBy;
->>>>>>> origin/master
+
 				console.log(data.rows[0]);
 				
 			}
